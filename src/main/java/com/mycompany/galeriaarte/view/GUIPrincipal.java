@@ -4,6 +4,8 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SANTIAGO
@@ -15,6 +17,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
      */
     public GUIPrincipal() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,57 +29,138 @@ public class GUIPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemSalir = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemAgregarObra = new javax.swing.JMenuItem();
+        jMenuItemListarObra = new javax.swing.JMenuItem();
+        jMenuItemActualizarObra = new javax.swing.JMenuItem();
+        jMenuItemEliminarObra = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItemAcercade = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Archivo");
+
+        jMenuItemSalir.setText("Salir");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemSalir);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("ObraArte");
+
+        jMenuItemAgregarObra.setText("Agregar Obra de Arte");
+        jMenuItemAgregarObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarObraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemAgregarObra);
+
+        jMenuItemListarObra.setText("Listar Obra de Arte");
+        jMenuItemListarObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListarObraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemListarObra);
+
+        jMenuItemActualizarObra.setText("Actualizar Obra de Arte");
+        jMenuItemActualizarObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActualizarObraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemActualizarObra);
+
+        jMenuItemEliminarObra.setText("Eliminar Obra de Arte");
+        jMenuItemEliminarObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEliminarObraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemEliminarObra);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Ayuda");
+
+        jMenuItemAcercade.setText("Acerca de...");
+        jMenuItemAcercade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAcercadeActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemAcercade);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 349, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
+
+    private void jMenuItemAcercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercadeActionPerformed
+        JOptionPane.showMessageDialog(this, "Desarrollado por Santiago Arciniegas - 2220221016\n" + "Daniel Mauricio Álvarez Morales - 2420211008\n" + "Brayan Santiago Cartagena Díaz - 2220221056\n" + "Julián Camilo Aranguren Herrán - 2220231103");
+    }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
+
+    private void jMenuItemAgregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarObraActionPerformed
+        GUIAgregarObraArte gui = new GUIAgregarObraArte();
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAgregarObraActionPerformed
+
+    private void jMenuItemListarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarObraActionPerformed
+        GUIListarObraArte gui = new GUIListarObraArte();
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemListarObraActionPerformed
+
+    private void jMenuItemActualizarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarObraActionPerformed
+        GUIActualizarObraArte gui = new GUIActualizarObraArte();
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemActualizarObraActionPerformed
+
+    private void jMenuItemEliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarObraActionPerformed
+        GUIEliminarObraArte gui = new GUIEliminarObraArte();
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemEliminarObraActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIPrincipal().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemAcercade;
+    private javax.swing.JMenuItem jMenuItemActualizarObra;
+    private javax.swing.JMenuItem jMenuItemAgregarObra;
+    private javax.swing.JMenuItem jMenuItemEliminarObra;
+    private javax.swing.JMenuItem jMenuItemListarObra;
+    private javax.swing.JMenuItem jMenuItemSalir;
     // End of variables declaration//GEN-END:variables
 }

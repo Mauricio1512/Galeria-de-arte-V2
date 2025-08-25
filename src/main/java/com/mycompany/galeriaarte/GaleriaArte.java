@@ -4,6 +4,8 @@
 
 package com.mycompany.galeriaarte;
 
+import com.mycompany.galeriaarte.view.GUIPrincipal;
+
 /**
  *
  * @author SANTIAGO
@@ -11,6 +13,7 @@ package com.mycompany.galeriaarte;
 public class GaleriaArte {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        GUIPrincipal gui = new GUIPrincipal();
+        gui.setVisible(true);
     }
 }
