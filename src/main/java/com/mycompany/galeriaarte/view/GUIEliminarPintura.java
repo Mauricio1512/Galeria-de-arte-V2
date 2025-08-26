@@ -8,12 +8,12 @@ package com.mycompany.galeriaarte.view;
  *
  * @author SANTIAGO
  */
-public class GUIEliminarObraArte extends javax.swing.JFrame {
+public class GUIEliminarPintura extends javax.swing.JFrame {
 
     /**
      * Creates new form GUIAgregarObraArte
      */
-    public GUIEliminarObraArte() {
+    public GUIEliminarPintura() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -30,6 +30,8 @@ public class GUIEliminarObraArte extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jbtnSalir = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnBuscarObra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -44,7 +46,7 @@ public class GUIEliminarObraArte extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -61,6 +63,10 @@ public class GUIEliminarObraArte extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setText("Eliminar");
+
+        btnBuscarObra.setText("Buscar Obra de Arte");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +76,10 @@ public class GUIEliminarObraArte extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 392, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscarObra)
+                        .addGap(80, 80, 80)
                         .addComponent(jbtnSalir)))
                 .addContainerGap())
         );
@@ -80,7 +89,10 @@ public class GUIEliminarObraArte extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jbtnSalir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnSalir)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnBuscarObra))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -93,6 +105,8 @@ public class GUIEliminarObraArte extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarObra;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtnSalir;

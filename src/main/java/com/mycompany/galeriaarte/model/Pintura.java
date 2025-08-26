@@ -11,9 +11,9 @@ import java.time.LocalDate;
  * @author SANTIAGO
  */
 public class Pintura extends ObraArte {
-    
+
     private String tecnica;
-    
+
     private String dimensiones;
 
     public Pintura(String tecnica, String dimensiones, int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado) {
@@ -22,8 +22,4 @@ public class Pintura extends ObraArte {
         this.dimensiones = dimensiones;
     }
 
-    
-    
-    
-    
 }

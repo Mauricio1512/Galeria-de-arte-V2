@@ -32,12 +32,22 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemSalir = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItemAgregarObra = new javax.swing.JMenuItem();
-        jMenuItemListarObra = new javax.swing.JMenuItem();
-        jMenuItemActualizarObra = new javax.swing.JMenuItem();
-        jMenuItemEliminarObra = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMenuPintura = new javax.swing.JMenu();
+        jMenuItemAgregarPintura = new javax.swing.JMenuItem();
+        jMenuItemListarPintura = new javax.swing.JMenuItem();
+        jMenuItemActualizarPintura = new javax.swing.JMenuItem();
+        jMenuItemEliminarPintura = new javax.swing.JMenuItem();
+        jMenuEscultura = new javax.swing.JMenu();
+        jMenuItemAgregarEscultura = new javax.swing.JMenuItem();
+        jMenuItemListarEscultura = new javax.swing.JMenuItem();
+        jMenuItemActualizarEscultura = new javax.swing.JMenuItem();
+        jMenuItemEliminarEscultura = new javax.swing.JMenuItem();
+        jMenuConcurso = new javax.swing.JMenu();
+        jMenuItemAgregarConcurso = new javax.swing.JMenuItem();
+        jMenuItemListarConcurso = new javax.swing.JMenuItem();
+        jMenuItemActualizarConcurso = new javax.swing.JMenuItem();
+        jMenuItemEliminarConcurso = new javax.swing.JMenuItem();
+        jMenuAyuda = new javax.swing.JMenu();
         jMenuItemAcercade = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,43 +64,115 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("ObraArte");
+        jMenuPintura.setText("Pintura");
 
-        jMenuItemAgregarObra.setText("Agregar Obra de Arte");
-        jMenuItemAgregarObra.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAgregarPintura.setText("Agregar Pintura");
+        jMenuItemAgregarPintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAgregarObraActionPerformed(evt);
+                jMenuItemAgregarPinturaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemAgregarObra);
+        jMenuPintura.add(jMenuItemAgregarPintura);
 
-        jMenuItemListarObra.setText("Listar Obra de Arte");
-        jMenuItemListarObra.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemListarPintura.setText("Listar Pintura");
+        jMenuItemListarPintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemListarObraActionPerformed(evt);
+                jMenuItemListarPinturaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemListarObra);
+        jMenuPintura.add(jMenuItemListarPintura);
 
-        jMenuItemActualizarObra.setText("Actualizar Obra de Arte");
-        jMenuItemActualizarObra.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemActualizarPintura.setText("Actualizar Pintura");
+        jMenuItemActualizarPintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemActualizarObraActionPerformed(evt);
+                jMenuItemActualizarPinturaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemActualizarObra);
+        jMenuPintura.add(jMenuItemActualizarPintura);
 
-        jMenuItemEliminarObra.setText("Eliminar Obra de Arte");
-        jMenuItemEliminarObra.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemEliminarPintura.setText("Eliminar Pintura");
+        jMenuItemEliminarPintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEliminarObraActionPerformed(evt);
+                jMenuItemEliminarPinturaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemEliminarObra);
+        jMenuPintura.add(jMenuItemEliminarPintura);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuPintura);
 
-        jMenu3.setText("Ayuda");
+        jMenuEscultura.setText("Escultura");
+
+        jMenuItemAgregarEscultura.setText("Agregar Escultura");
+        jMenuItemAgregarEscultura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarEsculturaActionPerformed(evt);
+            }
+        });
+        jMenuEscultura.add(jMenuItemAgregarEscultura);
+
+        jMenuItemListarEscultura.setText("Listar Escultura");
+        jMenuItemListarEscultura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListarEsculturaActionPerformed(evt);
+            }
+        });
+        jMenuEscultura.add(jMenuItemListarEscultura);
+
+        jMenuItemActualizarEscultura.setText("Actualizar Escultura");
+        jMenuItemActualizarEscultura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActualizarEsculturaActionPerformed(evt);
+            }
+        });
+        jMenuEscultura.add(jMenuItemActualizarEscultura);
+
+        jMenuItemEliminarEscultura.setText("Eliminar Escultura");
+        jMenuItemEliminarEscultura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEliminarEsculturaActionPerformed(evt);
+            }
+        });
+        jMenuEscultura.add(jMenuItemEliminarEscultura);
+
+        jMenuBar1.add(jMenuEscultura);
+
+        jMenuConcurso.setText("Concurso");
+
+        jMenuItemAgregarConcurso.setText("Agregar Concurso");
+        jMenuItemAgregarConcurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarConcursoActionPerformed(evt);
+            }
+        });
+        jMenuConcurso.add(jMenuItemAgregarConcurso);
+
+        jMenuItemListarConcurso.setText("Listar Concurso");
+        jMenuItemListarConcurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListarConcursoActionPerformed(evt);
+            }
+        });
+        jMenuConcurso.add(jMenuItemListarConcurso);
+
+        jMenuItemActualizarConcurso.setText("Actualizar Concurso");
+        jMenuItemActualizarConcurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActualizarConcursoActionPerformed(evt);
+            }
+        });
+        jMenuConcurso.add(jMenuItemActualizarConcurso);
+
+        jMenuItemEliminarConcurso.setText("Eliminar Concurso");
+        jMenuItemEliminarConcurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEliminarConcursoActionPerformed(evt);
+            }
+        });
+        jMenuConcurso.add(jMenuItemEliminarConcurso);
+
+        jMenuBar1.add(jMenuConcurso);
+
+        jMenuAyuda.setText("Ayuda");
 
         jMenuItemAcercade.setText("Acerca de...");
         jMenuItemAcercade.addActionListener(new java.awt.event.ActionListener() {
@@ -98,9 +180,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
                 jMenuItemAcercadeActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemAcercade);
+        jMenuAyuda.add(jMenuItemAcercade);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuAyuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -126,25 +208,57 @@ public class GUIPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Desarrollado por Santiago Arciniegas - 2220221016\n" + "Daniel Mauricio Álvarez Morales - 2420211008\n" + "Brayan Santiago Cartagena Díaz - 2220221056\n" + "Julián Camilo Aranguren Herrán - 2220231103");
     }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
 
-    private void jMenuItemAgregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarObraActionPerformed
-        GUIAgregarObraArte gui = new GUIAgregarObraArte();
+    private void jMenuItemAgregarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarPinturaActionPerformed
+        GUIAgregarPintura gui = new GUIAgregarPintura();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItemAgregarObraActionPerformed
+    }//GEN-LAST:event_jMenuItemAgregarPinturaActionPerformed
 
-    private void jMenuItemListarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarObraActionPerformed
-        GUIListarObraArte gui = new GUIListarObraArte();
+    private void jMenuItemListarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarPinturaActionPerformed
+        GUIListarPintura gui = new GUIListarPintura();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItemListarObraActionPerformed
+    }//GEN-LAST:event_jMenuItemListarPinturaActionPerformed
 
-    private void jMenuItemActualizarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarObraActionPerformed
-        GUIActualizarObraArte gui = new GUIActualizarObraArte();
+    private void jMenuItemActualizarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarPinturaActionPerformed
+        GUIActualizarPintura gui = new GUIActualizarPintura();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItemActualizarObraActionPerformed
+    }//GEN-LAST:event_jMenuItemActualizarPinturaActionPerformed
 
-    private void jMenuItemEliminarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarObraActionPerformed
-        GUIEliminarObraArte gui = new GUIEliminarObraArte();
+    private void jMenuItemEliminarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarPinturaActionPerformed
+        GUIEliminarPintura gui = new GUIEliminarPintura();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItemEliminarObraActionPerformed
+    }//GEN-LAST:event_jMenuItemEliminarPinturaActionPerformed
+
+    private void jMenuItemAgregarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarEsculturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAgregarEsculturaActionPerformed
+
+    private void jMenuItemListarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarEsculturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemListarEsculturaActionPerformed
+
+    private void jMenuItemActualizarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarEsculturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemActualizarEsculturaActionPerformed
+
+    private void jMenuItemEliminarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarEsculturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemEliminarEsculturaActionPerformed
+
+    private void jMenuItemAgregarConcursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarConcursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAgregarConcursoActionPerformed
+
+    private void jMenuItemListarConcursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarConcursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemListarConcursoActionPerformed
+
+    private void jMenuItemActualizarConcursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarConcursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemActualizarConcursoActionPerformed
+
+    private void jMenuItemEliminarConcursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarConcursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemEliminarConcursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,14 +267,24 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuConcurso;
+    private javax.swing.JMenu jMenuEscultura;
     private javax.swing.JMenuItem jMenuItemAcercade;
-    private javax.swing.JMenuItem jMenuItemActualizarObra;
-    private javax.swing.JMenuItem jMenuItemAgregarObra;
-    private javax.swing.JMenuItem jMenuItemEliminarObra;
-    private javax.swing.JMenuItem jMenuItemListarObra;
+    private javax.swing.JMenuItem jMenuItemActualizarConcurso;
+    private javax.swing.JMenuItem jMenuItemActualizarEscultura;
+    private javax.swing.JMenuItem jMenuItemActualizarPintura;
+    private javax.swing.JMenuItem jMenuItemAgregarConcurso;
+    private javax.swing.JMenuItem jMenuItemAgregarEscultura;
+    private javax.swing.JMenuItem jMenuItemAgregarPintura;
+    private javax.swing.JMenuItem jMenuItemEliminarConcurso;
+    private javax.swing.JMenuItem jMenuItemEliminarEscultura;
+    private javax.swing.JMenuItem jMenuItemEliminarPintura;
+    private javax.swing.JMenuItem jMenuItemListarConcurso;
+    private javax.swing.JMenuItem jMenuItemListarEscultura;
+    private javax.swing.JMenuItem jMenuItemListarPintura;
     private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JMenu jMenuPintura;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,11 +11,11 @@ import java.time.LocalDate;
  * @author SANTIAGO
  */
 public class Escultura extends ObraArte {
-    
+
     private double altura;
-    
+
     private double volumen;
-    
+
     private String tipoEscultura;
 
     public Escultura(double altura, double volumen, String tipoEscultura, int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado) {
@@ -24,7 +24,5 @@ public class Escultura extends ObraArte {
         this.volumen = volumen;
         this.tipoEscultura = tipoEscultura;
     }
-    
-    
-    
+
 }
