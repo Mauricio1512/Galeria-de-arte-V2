@@ -1,7 +1,7 @@
-package com.mycompany.galeriaarte.servicio;
+package com.mycompany.galeriaarte.service;
 
 
-import com.mycompany.galeriaarte.modelo.ObraArte;
+import com.mycompany.galeriaarte.model.ObraArte;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

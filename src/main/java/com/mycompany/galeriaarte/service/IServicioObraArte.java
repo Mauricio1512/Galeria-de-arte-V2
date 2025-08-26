@@ -1,8 +1,8 @@
 
-package com.mycompany.galeriaarte.servicio;
+package com.mycompany.galeriaarte.service;
 
 
-import com.mycompany.galeriaarte.modelo.ObraArte;
+import com.mycompany.galeriaarte.model.ObraArte;
 import java.util.List;
 
 public interface IServicioObraArte
