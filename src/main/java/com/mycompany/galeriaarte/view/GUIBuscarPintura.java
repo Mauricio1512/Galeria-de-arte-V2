@@ -4,16 +4,20 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.service.IServicioObraArte;
+import com.mycompany.galeriaarte.service.ServicioObraArte;
+
 /**
  *
  * @author SANTIAGO
  */
-public class GUIActualizarPintura extends javax.swing.JFrame {
-
+public class GUIBuscarPintura extends javax.swing.JFrame {
+    private IServicioObraArte servicioObraArte;
     /**
      * Creates new form GUIAgregarObraArte
      */
-    public GUIActualizarPintura() {
+    public GUIBuscarPintura(IServicioObraArte ServicioObraArte) {
+        this.servicioObraArte = new ServicioObraArte();
         initComponents();
         setLocationRelativeTo(null);
     }

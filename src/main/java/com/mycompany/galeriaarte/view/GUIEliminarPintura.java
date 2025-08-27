@@ -4,16 +4,20 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.service.IServicioObraArte;
+import com.mycompany.galeriaarte.service.ServicioObraArte;
+
 /**
  *
  * @author SANTIAGO
  */
 public class GUIEliminarPintura extends javax.swing.JFrame {
-
+    private IServicioObraArte servicioObraArte;
     /**
      * Creates new form GUIAgregarObraArte
      */
-    public GUIEliminarPintura() {
+    public GUIEliminarPintura(IServicioObraArte ServicioObraArte) {
+        this.servicioObraArte = new ServicioObraArte();
         initComponents();
         setLocationRelativeTo(null);
     }

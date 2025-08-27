@@ -4,16 +4,25 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.model.Pintura;
+import com.mycompany.galeriaarte.service.IServicioObraArte;
+import com.mycompany.galeriaarte.service.ServicioObraArte;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author SANTIAGO
  */
 public class GUIListarPintura extends javax.swing.JFrame {
 
+    private IServicioObraArte servicioObraArte;
     /**
      * Creates new form GUIAgregarObraArte
      */
-    public GUIListarPintura() {
+    public GUIListarPintura(IServicioObraArte ServicioObraArte) {
+        this.servicioObraArte = ServicioObraArte;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -30,10 +39,8 @@ public class GUIListarPintura extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPinturas = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
-        btnListarEsculturas = new javax.swing.JButton();
-        btnObrasdeArte = new javax.swing.JButton();
         btnListarPinturas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -44,15 +51,15 @@ public class GUIListarPintura extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Listar Obra de Arte");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPinturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "IdObra", "Titulo", "Autor", "Año de Creación", "Precio", "Estado", "Técnica", "Dimensiones", "Altura", "Volumen", "TipoEscultura"
+                "IdObra", "Titulo", "Autor", "Año de Creación", "Precio", "Estado", "Técnica", "Dimensiones"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPinturas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,7 +68,7 @@ public class GUIListarPintura extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -82,10 +89,6 @@ public class GUIListarPintura extends javax.swing.JFrame {
             }
         });
 
-        btnListarEsculturas.setText("Listar Esculturas");
-
-        btnObrasdeArte.setText("Listar Obras de Arte");
-
         btnListarPinturas.setText("Listar Pinturas");
         btnListarPinturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,12 +105,8 @@ public class GUIListarPintura extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnObrasdeArte)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                         .addComponent(btnListarPinturas)
-                        .addGap(98, 98, 98)
-                        .addComponent(btnListarEsculturas)
-                        .addGap(97, 97, 97)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir)))
                 .addContainerGap())
         );
@@ -119,9 +118,7 @@ public class GUIListarPintura extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
-                    .addComponent(btnListarEsculturas)
-                    .addComponent(btnListarPinturas)
-                    .addComponent(btnObrasdeArte))
+                    .addComponent(btnListarPinturas))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -133,18 +130,35 @@ public class GUIListarPintura extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnListarPinturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPinturasActionPerformed
-        // TODO add your handling code here:
+     
+    List<Pintura> pinturas = servicioObraArte.listarPinturas();
+    DefaultTableModel model = (DefaultTableModel) tblPinturas.getModel();
+    model.setRowCount(0);
+    for (Pintura p : pinturas) {
+        model.addRow(new Object[] {
+            p.getIdObra(),
+            p.getTitulo(),
+            p.getAutor(),
+            p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
+            p.getPrecio(),
+            p.getEstado(),
+            p.getTecnica(),
+            p.getDimensiones()
+        });
+    }
+    
+    if (pinturas.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No hay pinturas para mostrar.");
+    }
     }//GEN-LAST:event_btnListarPinturasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnListarEsculturas;
     private javax.swing.JButton btnListarPinturas;
-    private javax.swing.JButton btnObrasdeArte;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPinturas;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,7 @@
 package com.mycompany.galeriaarte.service;
 
 import com.mycompany.galeriaarte.model.ObraArte;
+import com.mycompany.galeriaarte.model.Pintura;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,17 @@ public class ServicioObraArte implements IServicioObraArte {
     @Override
     public List<ObraArte> listarObras() {
         return new ArrayList<>(listaObras);
+    }
+    
+    @Override
+    public List<Pintura> listarPinturas() {
+        List<Pintura> pinturas = new ArrayList<>();
+        for (ObraArte oa : listaObras) {
+            if (oa instanceof Pintura) {
+                pinturas.add((Pintura) oa);
+            }
+        }
+        return pinturas; 
     }
 
     @Override

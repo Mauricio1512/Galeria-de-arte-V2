@@ -26,8 +26,8 @@ public abstract class ObraArte {
         this.titulo = titulo;
         this.autor = autor;
         this.anioCreacion = anioCreacion;
-        this.precio = precio;
-        this.estado = estado;
+        setPrecio(precio);      
+        setEstado(estado);
     }
 
     public ObraArte() {
@@ -84,7 +84,11 @@ public abstract class ObraArte {
     }
 
     public void setEstado(String estado) {
+    if (estado.equalsIgnoreCase("Activo") || estado.equalsIgnoreCase("Inactivo")) {
         this.estado = estado;
+    } else {
+        throw new IllegalArgumentException("Estado inválido. Solo se permite 'Activo' o 'Inactivo'.");
     }
+}
 
 }

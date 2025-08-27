@@ -8,6 +8,7 @@ package com.mycompany.galeriaarte.model;
  *
  * @author SANTIAGO
  */
-public interface IPeculiaridad {
+public interface IFragilidad {
     
+    String calcularNivel();
 }

@@ -4,6 +4,8 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.service.IServicioObraArte;
+import com.mycompany.galeriaarte.service.ServicioObraArte;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +13,8 @@ import javax.swing.JOptionPane;
  * @author SANTIAGO
  */
 public class GUIPrincipal extends javax.swing.JFrame {
-
+    
+    private final IServicioObraArte servicioObraArte = new ServicioObraArte();
     /**
      * Creates new form GUIPrincipal
      */
@@ -35,7 +38,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuPintura = new javax.swing.JMenu();
         jMenuItemAgregarPintura = new javax.swing.JMenuItem();
         jMenuItemListarPintura = new javax.swing.JMenuItem();
-        jMenuItemActualizarPintura = new javax.swing.JMenuItem();
+        jMenuItemBuscarPintura = new javax.swing.JMenuItem();
         jMenuItemEliminarPintura = new javax.swing.JMenuItem();
         jMenuEscultura = new javax.swing.JMenu();
         jMenuItemAgregarEscultura = new javax.swing.JMenuItem();
@@ -77,13 +80,13 @@ public class GUIPrincipal extends javax.swing.JFrame {
         });
         jMenuPintura.add(jMenuItemListarPintura);
 
-        jMenuItemActualizarPintura.setText("Actualizar Pintura");
-        jMenuItemActualizarPintura.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemBuscarPintura.setText("Buscar Pintura");
+        jMenuItemBuscarPintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemActualizarPinturaActionPerformed(evt);
+                jMenuItemBuscarPinturaActionPerformed(evt);
             }
         });
-        jMenuPintura.add(jMenuItemActualizarPintura);
+        jMenuPintura.add(jMenuItemBuscarPintura);
 
         jMenuItemEliminarPintura.setText("Eliminar Pintura");
         jMenuItemEliminarPintura.addActionListener(new java.awt.event.ActionListener() {
@@ -168,22 +171,22 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
 
     private void jMenuItemAgregarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarPinturaActionPerformed
-        GUIAgregarPintura gui = new GUIAgregarPintura();
+        GUIAgregarPintura gui = new GUIAgregarPintura(servicioObraArte);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarPinturaActionPerformed
 
     private void jMenuItemListarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarPinturaActionPerformed
-        GUIListarPintura gui = new GUIListarPintura();
+        GUIListarPintura gui = new GUIListarPintura(servicioObraArte);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListarPinturaActionPerformed
 
-    private void jMenuItemActualizarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarPinturaActionPerformed
-        GUIActualizarPintura gui = new GUIActualizarPintura();
+    private void jMenuItemBuscarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarPinturaActionPerformed
+        GUIBuscarPintura gui = new GUIBuscarPintura(servicioObraArte);
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItemActualizarPinturaActionPerformed
+    }//GEN-LAST:event_jMenuItemBuscarPinturaActionPerformed
 
     private void jMenuItemEliminarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarPinturaActionPerformed
-        GUIEliminarPintura gui = new GUIEliminarPintura();
+        GUIEliminarPintura gui = new GUIEliminarPintura(servicioObraArte);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarPinturaActionPerformed
 
@@ -215,9 +218,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuEscultura;
     private javax.swing.JMenuItem jMenuItemAcercade;
     private javax.swing.JMenuItem jMenuItemActualizarEscultura;
-    private javax.swing.JMenuItem jMenuItemActualizarPintura;
     private javax.swing.JMenuItem jMenuItemAgregarEscultura;
     private javax.swing.JMenuItem jMenuItemAgregarPintura;
+    private javax.swing.JMenuItem jMenuItemBuscarPintura;
     private javax.swing.JMenuItem jMenuItemEliminarEscultura;
     private javax.swing.JMenuItem jMenuItemEliminarPintura;
     private javax.swing.JMenuItem jMenuItemListarEscultura;

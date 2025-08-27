@@ -28,12 +28,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnObrasdeArte" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="101" max="32767" attributes="0"/>
                       <Component id="btnListarPinturas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                      <Component id="btnListarEsculturas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -49,9 +45,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnListarEsculturas" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnListarPinturas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnObrasdeArte" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
@@ -74,7 +68,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="705" max="32767" attributes="0"/>
                       <Component id="jLabel1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -110,10 +104,10 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tblPinturas">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="11" rowCount="0">
+                  <Table columnCount="8" rowCount="0">
                     <Column editable="true" title="IdObra" type="java.lang.Object"/>
                     <Column editable="true" title="Titulo" type="java.lang.Object"/>
                     <Column editable="true" title="Autor" type="java.lang.Object"/>
@@ -122,28 +116,10 @@
                     <Column editable="true" title="Estado" type="java.lang.Object"/>
                     <Column editable="true" title="T&#xe9;cnica" type="java.lang.Object"/>
                     <Column editable="true" title="Dimensiones" type="java.lang.Object"/>
-                    <Column editable="true" title="Altura" type="java.lang.Object"/>
-                    <Column editable="true" title="Volumen" type="java.lang.Object"/>
-                    <Column editable="true" title="TipoEscultura" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -202,16 +178,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnListarEsculturas">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Listar Esculturas"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnObrasdeArte">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Listar Obras de Arte"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnListarPinturas">
       <Properties>
