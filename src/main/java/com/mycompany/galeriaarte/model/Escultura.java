@@ -17,12 +17,15 @@ public class Escultura extends ObraArte {
     private double volumen;
 
     private String tipoEscultura;
+    
+    private String material;
 
-    public Escultura(double altura, double volumen, String tipoEscultura, int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado) {
+    public Escultura(double altura, double volumen, String tipoEscultura, String material, int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado) {
         super(idObra, titulo, autor, anioCreacion, precio, estado);
         this.altura = altura;
         this.volumen = volumen;
         this.tipoEscultura = tipoEscultura;
+        this.material = material;
     }
 
     public double getAltura() {
@@ -47,6 +50,14 @@ public class Escultura extends ObraArte {
 
     public void setTipoEscultura(String tipoEscultura) {
         this.tipoEscultura = tipoEscultura;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
     }
 
     

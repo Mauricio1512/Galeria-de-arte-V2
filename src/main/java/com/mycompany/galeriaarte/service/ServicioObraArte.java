@@ -1,5 +1,6 @@
 package com.mycompany.galeriaarte.service;
 
+import com.mycompany.galeriaarte.model.Escultura;
 import com.mycompany.galeriaarte.model.ObraArte;
 import com.mycompany.galeriaarte.model.Pintura;
 import java.util.ArrayList;
@@ -36,6 +37,17 @@ public class ServicioObraArte implements IServicioObraArte {
             }
         }
         return pinturas; 
+    }
+    
+    @Override
+    public List<Escultura> listarEsculturas() {
+        List<Escultura> esculturas = new ArrayList<>();
+        for (ObraArte oa : listaObras) {
+            if (oa instanceof Escultura) {
+                esculturas.add((Escultura) oa);
+            }
+        }
+        return esculturas; 
     }
 
     @Override
