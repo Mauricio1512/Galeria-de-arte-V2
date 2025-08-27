@@ -22,4 +22,20 @@ public class Pintura extends ObraArte {
         this.dimensiones = dimensiones;
     }
 
+    public String getTecnica() {
+        return tecnica;
+    }
+
+    public void setTecnica(String tecnica) {
+        this.tecnica = tecnica;
+    }
+
+    public String getDimensiones() {
+        return dimensiones;
+    }
+
+    public void setDimensiones(String dimensiones) {
+        this.dimensiones = dimensiones;
+    }
+
 }

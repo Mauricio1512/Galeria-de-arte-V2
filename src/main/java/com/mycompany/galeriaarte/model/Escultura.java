@@ -25,4 +25,30 @@ public class Escultura extends ObraArte {
         this.tipoEscultura = tipoEscultura;
     }
 
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public double getVolumen() {
+        return volumen;
+    }
+
+    public void setVolumen(double volumen) {
+        this.volumen = volumen;
+    }
+
+    public String getTipoEscultura() {
+        return tipoEscultura;
+    }
+
+    public void setTipoEscultura(String tipoEscultura) {
+        this.tipoEscultura = tipoEscultura;
+    }
+
+    
+    
 }
