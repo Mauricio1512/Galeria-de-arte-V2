@@ -10,5 +10,5 @@ package com.mycompany.galeriaarte.model;
  */
 public interface IFragilidad {
     
-    String calcularNivel();
+    double calcularNivel();
 }
