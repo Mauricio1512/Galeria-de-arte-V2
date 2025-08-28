@@ -10,46 +10,30 @@ import java.time.LocalDate;
  *
  * @author SANTIAGO
  */
-public class CertificadoAutenticidad {
-    
-    String codigo;
-    
-    LocalDate fecha;
-    
-    String emisor;
 
-    public CertificadoAutenticidad(String codigo, LocalDate fecha, String emisor) {
-        this.codigo = codigo;
-        this.fecha = fecha;
-        this.emisor = emisor;
+public class CertificadoAutenticidad
+    {
+    private String numeroCertificado;
+    private LocalDate fechaEmision;
+    private String entidadEmisora;
+
+    public CertificadoAutenticidad(String numeroCertificado, LocalDate fechaEmision, String entidadEmisora) 
+        {
+        this.numeroCertificado = numeroCertificado;
+        this.fechaEmision = fechaEmision;
+        this.entidadEmisora = entidadEmisora;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
+    public String getNumeroCertificado() { return numeroCertificado; }
+    public LocalDate getFechaEmision() { return fechaEmision; }
+    public String getEntidadEmisora() { return entidadEmisora; }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    @Override
+    public String toString() 
+        {
+        return "Certificado N°: " + numeroCertificado +
+               ", emitido por: " + entidadEmisora +
+               " en fecha: " + fechaEmision;
     }
-
-    public LocalDate getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getEmisor() {
-        return emisor;
-    }
-
-    public void setEmisor(String emisor) {
-        this.emisor = emisor;
-    }
-    
-    
-    
-    
-    
 }
+
