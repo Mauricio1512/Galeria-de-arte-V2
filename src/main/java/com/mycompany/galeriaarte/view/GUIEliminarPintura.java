@@ -4,8 +4,11 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.model.ObraArte;
+import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,12 +18,18 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
     private IServicioObraArte servicioObraArte;
     /**
      * Creates new form GUIAgregarObraArte
+     * @param ServicioObraArte
      */
     public GUIEliminarPintura(IServicioObraArte ServicioObraArte) {
         this.servicioObraArte = new ServicioObraArte();
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+  
+
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,8 +72,18 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnBuscarPintura.setText("Buscar Pintura");
+        btnBuscarPintura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPinturaActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -215,10 +234,10 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(btnEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addComponent(btnBuscarPintura)
-                .addGap(128, 128, 128)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addGap(152, 152, 152)
                 .addComponent(jbtnSalir)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,8 +252,8 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
                 .addContainerGap(359, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
-                    .addComponent(btnBuscarPintura)
-                    .addComponent(jbtnSalir))
+                    .addComponent(jbtnSalir)
+                    .addComponent(btnBuscarPintura))
                 .addGap(23, 23, 23))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -277,6 +296,53 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
     private void txtDimensionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDimensionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDimensionesActionPerformed
+
+    private void btnBuscarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPinturaActionPerformed
+         try {
+        int idBuscado = Integer.parseInt(txtId.getText());
+        ObraArte encontrada = servicioObraArte.buscarObraArte(idBuscado);
+
+        if (encontrada != null) {
+            // Rellenar los campos con la información
+            txtTitulo.setText(encontrada.getTitulo());
+            txtAutor.setText(encontrada.getAutor());
+            txtAnioCreacion.setText(encontrada.getAnioCreacion() != null ? encontrada.getAnioCreacion().toString() : "");
+            txtPrecio.setText(String.valueOf(encontrada.getPrecio()));
+            txtEstado.setText(encontrada.getEstado());
+
+            // Si es una Pintura, rellenar sus campos específicos
+            if (encontrada instanceof Pintura) {
+                Pintura p = (Pintura) encontrada;
+                txtTecnica.setText(p.getTecnica());
+                txtDimensiones.setText(p.getDimensiones());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
+    }
+    }//GEN-LAST:event_btnBuscarPinturaActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    try {
+        int idEliminar = Integer.parseInt(txtId.getText());
+        ObraArte encontrada = servicioObraArte.buscarObraArte(idEliminar);
+
+        if (encontrada != null) {
+            encontrada.setEstado("Eliminado"); // Cambiar estado
+            JOptionPane.showMessageDialog(this, 
+                "La pintura con ID " + idEliminar + " fue marcada como ELIMINADA.");
+
+            // Refrescar campo de estado en la GUI
+            txtEstado.setText("Eliminado");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró pintura con ese ID.");
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
+    }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

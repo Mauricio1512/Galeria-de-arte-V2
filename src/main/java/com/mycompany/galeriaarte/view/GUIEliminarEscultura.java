@@ -14,16 +14,21 @@ import javax.swing.JOptionPane;
  *
  * @author SANTIAGO
  */
-public class GUIBuscarPintura extends javax.swing.JFrame {
+public class GUIEliminarEscultura extends javax.swing.JFrame {
     private IServicioObraArte servicioObraArte;
     /**
      * Creates new form GUIAgregarObraArte
      */
-    public GUIBuscarPintura(IServicioObraArte ServicioObraArte) {
+    public GUIEliminarEscultura(IServicioObraArte ServicioObraArte) {
         this.servicioObraArte = new ServicioObraArte();
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+  
+
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,37 +39,53 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBuscaPintura = new javax.swing.JButton();
+        btnBuscarEscultura = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         txtTitulo = new javax.swing.JTextField();
         txtAutor = new javax.swing.JTextField();
         txtAnioCreacion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
-        txtTecnica = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtDimensiones = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtAltura = new javax.swing.JTextField();
+        txtVolumen = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
+        txtMaterial = new javax.swing.JTextField();
         jbtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnBuscaPintura.setText("Buscar Pintura");
-        btnBuscaPintura.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarEscultura.setText("Buscar Escultura");
+        btnBuscarEscultura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscaPinturaActionPerformed(evt);
+                btnBuscarEsculturaActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
             }
         });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Eliminar Escultura");
 
         jLabel3.setText("Id:");
 
@@ -77,6 +98,14 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
         jLabel7.setText("Precio:");
 
         jLabel8.setText("Estado:");
+
+        jLabel9.setText("Altura:");
+
+        jLabel10.setText("Volumen:");
+
+        jLabel11.setText("Tipo:");
+
+        jLabel12.setText("Material:");
 
         txtTitulo.setEnabled(false);
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -113,27 +142,33 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
             }
         });
 
-        txtTecnica.setEnabled(false);
-        txtTecnica.addActionListener(new java.awt.event.ActionListener() {
+        txtAltura.setEnabled(false);
+        txtAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTecnicaActionPerformed(evt);
+                txtAlturaActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Técnica:");
-
-        txtDimensiones.setEnabled(false);
-        txtDimensiones.addActionListener(new java.awt.event.ActionListener() {
+        txtVolumen.setEnabled(false);
+        txtVolumen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDimensionesActionPerformed(evt);
+                txtVolumenActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("Dimensiones:");
+        txtTipo.setEnabled(false);
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Buscar Pintura");
+        txtMaterial.setEnabled(false);
+        txtMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaterialActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,26 +181,34 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel9)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel11))
+                                        .addGap(23, 23, 23))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(47, 47, 47)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addGap(8, 8, 8)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTecnica, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDimensiones, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 214, Short.MAX_VALUE)))
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 262, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -200,12 +243,20 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtTecnica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtDimensiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jbtnSalir.setText("Salir");
@@ -220,30 +271,28 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBuscaPintura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-                .addComponent(jbtnSalir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBuscarEscultura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addGap(152, 152, 152)
+                        .addComponent(jbtnSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(349, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscaPintura)
-                    .addComponent(jbtnSalir))
-                .addGap(19, 19, 19))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(55, Short.MAX_VALUE)))
+                    .addComponent(btnEliminar)
+                    .addComponent(jbtnSalir)
+                    .addComponent(btnBuscarEscultura))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -273,16 +322,16 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEstadoActionPerformed
 
-    private void txtTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTecnicaActionPerformed
+    private void txtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTecnicaActionPerformed
+    }//GEN-LAST:event_txtAlturaActionPerformed
 
-    private void txtDimensionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDimensionesActionPerformed
+    private void txtVolumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVolumenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDimensionesActionPerformed
+    }//GEN-LAST:event_txtVolumenActionPerformed
 
-    private void btnBuscaPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaPinturaActionPerformed
-        try {
+    private void btnBuscarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEsculturaActionPerformed
+         try {
         int idBuscado = Integer.parseInt(txtId.getText());
         ObraArte encontrada = servicioObraArte.buscarObraArte(idBuscado);
 
@@ -295,9 +344,10 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
             txtEstado.setText(encontrada.getEstado());
 
             // Si es una Pintura, rellenar sus campos específicos
-            if (encontrada instanceof Pintura p) {
-                txtTecnica.setText(p.getTecnica());
-                txtDimensiones.setText(p.getDimensiones());
+            if (encontrada instanceof Pintura) {
+                Pintura p = (Pintura) encontrada;
+                txtAltura.setText(p.getTecnica());
+                txtVolumen.setText(p.getDimensiones());
             }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
@@ -305,13 +355,43 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
     }
-    
-    }//GEN-LAST:event_btnBuscaPinturaActionPerformed
+    }//GEN-LAST:event_btnBuscarEsculturaActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    try {
+        int idEliminar = Integer.parseInt(txtId.getText());
+        ObraArte encontrada = servicioObraArte.buscarObraArte(idEliminar);
+
+        if (encontrada != null) {
+            encontrada.setEstado("Eliminado"); // Cambiar estado
+            JOptionPane.showMessageDialog(this, 
+                "La pintura con ID " + idEliminar + " fue marcada como ELIMINADA.");
+
+            // Refrescar campo de estado en la GUI
+            txtEstado.setText("Eliminado");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró pintura con ese ID.");
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
+    }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoActionPerformed
+
+    private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaterialActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscaPintura;
+    private javax.swing.JButton btnBuscarEscultura;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -322,13 +402,15 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbtnSalir;
+    private javax.swing.JTextField txtAltura;
     private javax.swing.JTextField txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtDimensiones;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtMaterial;
     private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtTecnica;
+    private javax.swing.JTextField txtTipo;
     private javax.swing.JTextField txtTitulo;
+    private javax.swing.JTextField txtVolumen;
     // End of variables declaration//GEN-END:variables
 }
