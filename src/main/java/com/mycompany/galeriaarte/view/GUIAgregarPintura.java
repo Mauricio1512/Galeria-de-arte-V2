@@ -292,49 +292,85 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDimensionesActionPerformed
 
     private void btnAgregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarObraActionPerformed
-        Pintura pint;
+        try {
 
-        int idObra;
-        String titulo;
-        String autor;
-        LocalDate anioCreacion;
-        double precio;
-        String estado;
-        String tecnica;
-        String dimensiones;
+            if (txtId.getText().trim().isEmpty()
+                    || txtTitulo.getText().trim().isEmpty()
+                    || txtAutor.getText().trim().isEmpty()
+                    || txtAnioCreacion.getText().trim().isEmpty()
+                    || txtPrecio.getText().trim().isEmpty()
+                    || txtTecnica.getText().trim().isEmpty()
+                    || txtDimensiones.getText().trim().isEmpty()) {
 
-        idObra = Integer.parseInt(txtId.getText().trim());
-        titulo = txtTitulo.getText().trim();
-        autor = txtAutor.getText().trim();
-        anioCreacion = LocalDate.parse(txtAnioCreacion.getText().trim());
-        precio = Double.parseDouble(txtPrecio.getText().trim());
-        estado = txtEstado.getSelectedItem().toString().trim();
-        tecnica = txtTecnica.getText().trim();
-        dimensiones = txtDimensiones.getText().trim();
-        
-        
-        
-        pint = new Pintura(idObra, titulo, autor, anioCreacion, precio, estado, tecnica, dimensiones);
-        
-        if (certTemp != null) {
+                JOptionPane.showMessageDialog(this, "Debe completar todos los campos obligatorios.");
+                return;
+            }
+
+            int idObra;
+            double precio;
+            LocalDate anioCreacion;
+
+            try {
+                idObra = Integer.parseInt(txtId.getText().trim());
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "El ID debe ser un número entero.");
+                return;
+            }
+
+            try {
+                precio = Double.parseDouble(txtPrecio.getText().trim());
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "El precio debe ser numérico.");
+                return;
+            }
+
+            try {
+
+                anioCreacion = LocalDate.parse(txtAnioCreacion.getText().trim());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "La fecha debe tener formato yyyy-MM-dd.");
+                return;
+            }
+
+            String titulo = txtTitulo.getText().trim();
+            String autor = txtAutor.getText().trim();
+            String estado = txtEstado.getSelectedItem().toString().trim();
+            String tecnica = txtTecnica.getText().trim();
+            String dimensiones = txtDimensiones.getText().trim();
+
+            if (precio < 0) {
+                JOptionPane.showMessageDialog(this, "El precio no puede ser negativo.");
+                return;
+            }
+
+            Pintura pint = new Pintura(idObra, titulo, autor, anioCreacion, precio, estado, tecnica, dimensiones);
+
+            if (certTemp != null) {
                 pint.setCertificado(certTemp);
             }
-        
-        try {
-            servicioObraArte.añadirObraArte(pint /* o esc */);
-            JOptionPane.showMessageDialog(this, "Pintura agregada exitosamente.");
-        } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
 
-        txtId.setText("");
-        txtTitulo.setText("");
-        txtAutor.setText("");
-        txtAnioCreacion.setText("");
-        txtPrecio.setText("");
-        txtTecnica.setText("");
-        txtDimensiones.setText("");
-        certTemp = null; 
+            try {
+                servicioObraArte.añadirObraArte(pint);
+                JOptionPane.showMessageDialog(this, "Pintura agregada exitosamente.");
+            } catch (IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            txtId.setText("");
+            txtTitulo.setText("");
+            txtAutor.setText("");
+            txtAnioCreacion.setText("");
+            txtPrecio.setText("");
+            txtTecnica.setText("");
+            txtDimensiones.setText("");
+            certTemp = null;
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarObraActionPerformed
 
     private void btnCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCertificadoActionPerformed
@@ -342,8 +378,7 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
 
-        // al cerrar, recuperamos el resultado:
-        certTemp = dialog.getResultado(); // puede ser null si el usuario canceló
+        certTemp = dialog.getResultado();
         if (certTemp != null) {
             JOptionPane.showMessageDialog(this, "Certificado cargado: " + certTemp.getNumeroCertificado());
         }
