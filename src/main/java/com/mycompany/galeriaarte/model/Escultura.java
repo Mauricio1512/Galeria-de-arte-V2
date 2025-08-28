@@ -10,7 +10,7 @@ import java.time.LocalDate;
  *
  * @author SANTIAGO
  */
-public class Escultura extends ObraArte {
+public class Escultura extends ObraArte implements IFragilidad {
 
     private double altura;
 
@@ -19,6 +19,8 @@ public class Escultura extends ObraArte {
     private String tipoEscultura;
     
     private String material;
+    
+    private double peso;
 
     public Escultura(double altura, double volumen, String tipoEscultura, String material, int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado) {
         super(idObra, titulo, autor, anioCreacion, precio, estado);
@@ -26,6 +28,7 @@ public class Escultura extends ObraArte {
         this.volumen = volumen;
         this.tipoEscultura = tipoEscultura;
         this.material = material;
+        this.peso = peso;
     }
 
     public double getAltura() {
@@ -59,53 +62,7 @@ public class Escultura extends ObraArte {
     public void setMaterial(String material) {
         this.material = material;
     }
-
-package com.mycompany.galeriaarte.model;
-
-public class Escultura extends ObraArte implements IFragilidad 
-{
-
-    private String material;
-    private double peso;
-    private double altura;
-
-    public Escultura(int idObra, String titulo, String autor, String material, double peso, double altura) 
-    {
-        super(idObra, titulo, autor);
-        this.material = material;
-        this.peso = peso;
-        this.altura = altura;
-    }
-
-    public String getMaterial() 
-    {
-        return material;
-    }
-
-    public void setMaterial(String material)
-    {
-        this.material = material;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) 
-    {
-        this.peso = peso;
-    }
-
-    public double getAltura() 
-    {
-        return altura;
-    }
-
-    public void setAltura(double altura) 
-    {
-        this.altura = altura;
-    }
-
+    
     @Override
     public double calcularFragilidad() 
     {
@@ -125,4 +82,4 @@ public class Escultura extends ObraArte implements IFragilidad
 }
     
     
-}
+
