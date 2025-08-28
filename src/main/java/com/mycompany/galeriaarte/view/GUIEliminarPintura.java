@@ -15,21 +15,30 @@ import javax.swing.JOptionPane;
  * @author SANTIAGO
  */
 public class GUIEliminarPintura extends javax.swing.JFrame {
+
     private IServicioObraArte servicioObraArte;
+    private Pintura pinturaActual;
+
     /**
      * Creates new form GUIAgregarObraArte
+     *
      * @param ServicioObraArte
      */
     public GUIEliminarPintura(IServicioObraArte ServicioObraArte) {
-        this.servicioObraArte = new ServicioObraArte();
+        this.servicioObraArte = ServicioObraArte;
         initComponents();
         setLocationRelativeTo(null);
     }
-    
-  
 
-    
-
+    private void limpiarFormularioEscultura() {
+        txtTitulo.setText("");
+        txtAutor.setText("");
+        txtAnioCreacion.setText("");
+        txtPrecio.setText("");
+        txtEstado.setText("");
+        txtTecnica.setText("");
+        txtDimensiones.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -298,50 +307,51 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDimensionesActionPerformed
 
     private void btnBuscarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPinturaActionPerformed
-         try {
-        int idBuscado = Integer.parseInt(txtId.getText());
-        ObraArte encontrada = servicioObraArte.buscarObraArte(idBuscado);
+        try {
+            int idBuscado = Integer.parseInt(txtId.getText().trim());
+            ObraArte obra = servicioObraArte.buscarObraArte(idBuscado);
 
-        if (encontrada != null) {
-            // Rellenar los campos con la información
-            txtTitulo.setText(encontrada.getTitulo());
-            txtAutor.setText(encontrada.getAutor());
-            txtAnioCreacion.setText(encontrada.getAnioCreacion() != null ? encontrada.getAnioCreacion().toString() : "");
-            txtPrecio.setText(String.valueOf(encontrada.getPrecio()));
-            txtEstado.setText(encontrada.getEstado());
-
-            // Si es una Pintura, rellenar sus campos específicos
-            if (encontrada instanceof Pintura) {
-                Pintura p = (Pintura) encontrada;
-                txtTecnica.setText(p.getTecnica());
-                txtDimensiones.setText(p.getDimensiones());
+            if (obra == null) {
+                JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
+                limpiarFormularioEscultura();
+                return;
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
+
+            txtTitulo.setText(obra.getTitulo());
+            txtAutor.setText(obra.getAutor());
+            txtAnioCreacion.setText(String.valueOf(obra.getAnioCreacion()));
+            txtPrecio.setText(String.valueOf(obra.getPrecio()));
+            txtEstado.setText(obra.getEstado());
+
+            if (obra instanceof Pintura e) {
+                pinturaActual = e;
+                txtTecnica.setText(e.getTecnica());
+                txtDimensiones.setText(e.getDimensiones());
+
+            } else {
+                pinturaActual = null;
+                JOptionPane.showMessageDialog(this, "El ID corresponde a una obra que no es Pintura.");
+                limpiarFormularioEscultura();
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
         }
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
-    }
     }//GEN-LAST:event_btnBuscarPinturaActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-    try {
-        int idEliminar = Integer.parseInt(txtId.getText());
-        ObraArte encontrada = servicioObraArte.buscarObraArte(idEliminar);
-
-        if (encontrada != null) {
-            encontrada.setEstado("Eliminado"); // Cambiar estado
-            JOptionPane.showMessageDialog(this, 
-                "La pintura con ID " + idEliminar + " fue marcada como ELIMINADA.");
-
-            // Refrescar campo de estado en la GUI
-            txtEstado.setText("Eliminado");
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró pintura con ese ID.");
+        if (pinturaActual == null) {
+            JOptionPane.showMessageDialog(this, "Primero busque una pintura.");
+            return;
         }
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
-    }
+        int opt = JOptionPane.showConfirmDialog(this,
+                "¿Marcar como INACTIVA la pintura ID " + pinturaActual.getIdObra() + "?",
+                "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (opt == JOptionPane.YES_OPTION) {
+            pinturaActual.setEstado("Inactivo");
+            txtEstado.setText("Inactivo");
+            JOptionPane.showMessageDialog(this, "Pintura marcada como INACTIVA.");
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 

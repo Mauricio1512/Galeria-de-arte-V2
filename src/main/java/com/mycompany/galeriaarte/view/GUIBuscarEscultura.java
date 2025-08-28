@@ -4,6 +4,7 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.model.Escultura;
 import com.mycompany.galeriaarte.model.ObraArte;
 import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
@@ -15,14 +16,28 @@ import javax.swing.JOptionPane;
  * @author SANTIAGO
  */
 public class GUIBuscarEscultura extends javax.swing.JFrame {
+
     private IServicioObraArte servicioObraArte;
+
     /**
      * Creates new form GUIAgregarObraArte
      */
     public GUIBuscarEscultura(IServicioObraArte ServicioObraArte) {
-        this.servicioObraArte = new ServicioObraArte();
+        this.servicioObraArte = ServicioObraArte;
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    private void limpiarFormularioEscultura() {
+        txtTitulo.setText("");
+        txtAutor.setText("");
+        txtAnioCreacion.setText("");
+        txtPrecio.setText("");
+        txtEstado.setText("");
+        txtAltura.setText("");
+        txtVolumen.setText("");
+        txtTipo.setText("");
+        txtMaterial.setText("");
     }
 
     /**
@@ -55,8 +70,8 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
         txtEstado = new javax.swing.JTextField();
         txtAltura = new javax.swing.JTextField();
         txtVolumen = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
         txtMaterial = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
         jbtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -143,17 +158,17 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
             }
         });
 
-        txtTipo.setEnabled(false);
-        txtTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoActionPerformed(evt);
-            }
-        });
-
         txtMaterial.setEnabled(false);
         txtMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaterialActionPerformed(evt);
+            }
+        });
+
+        txtTipo.setEnabled(false);
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoActionPerformed(evt);
             }
         });
 
@@ -181,7 +196,7 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addGap(8, 8, 8)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,7 +205,7 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 214, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -234,11 +249,11 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -308,30 +323,38 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEstadoActionPerformed
 
     private void btnBuscaEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaEsculturaActionPerformed
+
         try {
-        int idBuscado = Integer.parseInt(txtId.getText());
-        ObraArte encontrada = servicioObraArte.buscarObraArte(idBuscado);
+            int idBuscado = Integer.parseInt(txtId.getText().trim());
+            ObraArte obra = servicioObraArte.buscarObraArte(idBuscado);
 
-        if (encontrada != null) {
-            // Rellenar los campos con la información
-            txtTitulo.setText(encontrada.getTitulo());
-            txtAutor.setText(encontrada.getAutor());
-            txtAnioCreacion.setText(encontrada.getAnioCreacion() != null ? encontrada.getAnioCreacion().toString() : "");
-            txtPrecio.setText(String.valueOf(encontrada.getPrecio()));
-            txtEstado.setText(encontrada.getEstado());
-
-            // Si es una Pintura, rellenar sus campos específicos
-            if (encontrada instanceof Pintura p) {
-                txtAltura.setText(p.getTecnica());
-                txtVolumen.setText(p.getDimensiones());
+            if (obra == null) {
+                JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
+                limpiarFormularioEscultura();
+                return;
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
+
+            txtTitulo.setText(obra.getTitulo());
+            txtAutor.setText(obra.getAutor());
+            txtAnioCreacion.setText(String.valueOf(obra.getAnioCreacion()));
+            txtPrecio.setText(String.valueOf(obra.getPrecio()));
+            txtEstado.setText(obra.getEstado());
+
+            if (obra instanceof Escultura e) {
+                txtAltura.setText(String.valueOf(e.getAltura()));
+                txtVolumen.setText(String.valueOf(e.getVolumen()));
+                txtTipo.setText(e.getTipoEscultura());
+                txtMaterial.setText(e.getMaterial());
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El ID corresponde a una obra que no es Escultura.");
+                limpiarFormularioEscultura();
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
         }
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
-    }
-    
+
     }//GEN-LAST:event_btnBuscaEsculturaActionPerformed
 
     private void txtVolumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVolumenActionPerformed
@@ -342,13 +365,13 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlturaActionPerformed
 
-    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoActionPerformed
-
     private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaterialActionPerformed
+
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

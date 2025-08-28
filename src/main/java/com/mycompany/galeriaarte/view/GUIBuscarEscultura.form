@@ -101,7 +101,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtTipo" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txtMaterial" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtAltura" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtEstado" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtVolumen" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
                                       <Component id="txtAutor" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtTitulo" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtId" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="txtMaterial" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txtTipo" min="-2" pref="170" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -169,12 +169,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMaterial" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTipo" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTipo" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMaterial" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
@@ -299,20 +299,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVolumenActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTipo">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTipoActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="txtMaterial">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaterialActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTipo">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTipoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

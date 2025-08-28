@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
  * @author SANTIAGO
  */
 public class GUIPrincipal extends javax.swing.JFrame {
-    
+
     private final IServicioObraArte servicioObraArte = new ServicioObraArte();
+
     /**
      * Creates new form GUIPrincipal
      */
@@ -45,7 +46,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuEscultura = new javax.swing.JMenu();
         jMenuItemAgregarEscultura = new javax.swing.JMenuItem();
         jMenuItemListarEscultura = new javax.swing.JMenuItem();
-        jMenuItemActualizarEscultura = new javax.swing.JMenuItem();
+        jMenuItemBuscarEscultura = new javax.swing.JMenuItem();
         jMenuItemEliminarEscultura = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
         jMenuItemAcercade = new javax.swing.JMenuItem();
@@ -124,13 +125,13 @@ public class GUIPrincipal extends javax.swing.JFrame {
         });
         jMenuEscultura.add(jMenuItemListarEscultura);
 
-        jMenuItemActualizarEscultura.setText("Actualizar Escultura");
-        jMenuItemActualizarEscultura.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemBuscarEscultura.setText("Buscar Escultura");
+        jMenuItemBuscarEscultura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemActualizarEsculturaActionPerformed(evt);
+                jMenuItemBuscarEsculturaActionPerformed(evt);
             }
         });
-        jMenuEscultura.add(jMenuItemActualizarEscultura);
+        jMenuEscultura.add(jMenuItemBuscarEscultura);
 
         jMenuItemEliminarEscultura.setText("Eliminar Escultura");
         jMenuItemEliminarEscultura.addActionListener(new java.awt.event.ActionListener() {
@@ -220,18 +221,19 @@ public class GUIPrincipal extends javax.swing.JFrame {
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListarEsculturaActionPerformed
 
-    private void jMenuItemActualizarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarEsculturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemActualizarEsculturaActionPerformed
+    private void jMenuItemBuscarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarEsculturaActionPerformed
+        GUIBuscarEscultura gui = new GUIBuscarEscultura(servicioObraArte);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemBuscarEsculturaActionPerformed
 
     private void jMenuItemEliminarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarEsculturaActionPerformed
-        // TODO add your handling code here:
+        GUIEliminarEscultura gui = new GUIEliminarEscultura(servicioObraArte);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarEsculturaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -241,9 +243,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEscultura;
     private javax.swing.JMenuItem jMenuItemAcercade;
-    private javax.swing.JMenuItem jMenuItemActualizarEscultura;
     private javax.swing.JMenuItem jMenuItemAgregarEscultura;
     private javax.swing.JMenuItem jMenuItemAgregarPintura;
+    private javax.swing.JMenuItem jMenuItemBuscarEscultura;
     private javax.swing.JMenuItem jMenuItemBuscarPintura;
     private javax.swing.JMenuItem jMenuItemEliminarEscultura;
     private javax.swing.JMenuItem jMenuItemEliminarPintura;

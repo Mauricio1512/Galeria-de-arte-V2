@@ -18,7 +18,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
 
     private final IServicioObraArte servicioObraArte;
 
-
     public GUIAgregarPintura(IServicioObraArte ServicioObraArte) {
         this.servicioObraArte = ServicioObraArte;
         initComponents();
@@ -313,9 +312,12 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         dimensiones = txtDimensiones.getText().trim();
 
         pint = new Pintura(idObra, titulo, autor, anioCreacion, precio, estado, tecnica, dimensiones);
-        servicioObraArte.añadirObraArte(pint);
-        
-        JOptionPane.showMessageDialog(this, "Pintura creada exitosamente.");
+        try {
+            servicioObraArte.añadirObraArte(pint /* o esc */);
+            JOptionPane.showMessageDialog(this, "Pintura agregada exitosamente.");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
         txtId.setText("");
         txtTitulo.setText("");

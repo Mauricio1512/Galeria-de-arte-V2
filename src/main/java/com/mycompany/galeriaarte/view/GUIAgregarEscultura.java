@@ -18,7 +18,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
 
     private final IServicioObraArte servicioObraArte;
 
-
     public GUIAgregarEscultura(IServicioObraArte ServicioObraArte) {
         this.servicioObraArte = ServicioObraArte;
         initComponents();
@@ -310,12 +309,14 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         volumen = Double.parseDouble(txtVolumen.getText().trim());
         tipoEscultura = txtTipoEscultura.getSelectedItem().toString().trim();
         material = txtMaterial.getSelectedItem().toString().trim();
-    
 
         esc = new Escultura(altura, volumen, tipoEscultura, material, idObra, titulo, autor, anioCreacion, precio, estado);
-        servicioObraArte.añadirObraArte(esc);
-        
-        JOptionPane.showMessageDialog(this, "Escultura creada exitosamente.");
+        try {
+            servicioObraArte.añadirObraArte(esc);
+            JOptionPane.showMessageDialog(this, "Escultura agregada exitosamente.");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
         txtId.setText("");
         txtTitulo.setText("");

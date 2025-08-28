@@ -79,12 +79,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemListarEsculturaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemActualizarEscultura">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBuscarEscultura">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Actualizar Escultura"/>
+                <Property name="text" type="java.lang.String" value="Buscar Escultura"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemActualizarEsculturaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBuscarEsculturaActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarEscultura">

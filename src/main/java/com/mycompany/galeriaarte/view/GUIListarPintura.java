@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class GUIListarPintura extends javax.swing.JFrame {
 
     private IServicioObraArte servicioObraArte;
+
     /**
      * Creates new form GUIAgregarObraArte
      */
@@ -49,7 +50,7 @@ public class GUIListarPintura extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Listar Obra de Arte");
+        jLabel1.setText("Listar Pinturas");
 
         tblPinturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,26 +131,26 @@ public class GUIListarPintura extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnListarPinturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPinturasActionPerformed
-     
-    List<Pintura> pinturas = servicioObraArte.listarPinturas();
-    DefaultTableModel model = (DefaultTableModel) tblPinturas.getModel();
-    model.setRowCount(0);
-    for (Pintura p : pinturas) {
-        model.addRow(new Object[] {
-            p.getIdObra(),
-            p.getTitulo(),
-            p.getAutor(),
-            p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
-            p.getPrecio(),
-            p.getEstado(),
-            p.getTecnica(),
-            p.getDimensiones()
-        });
-    }
-    
-    if (pinturas.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No hay pinturas para mostrar.");
-    }
+
+        List<Pintura> pinturas = servicioObraArte.listarPinturas();
+        DefaultTableModel model = (DefaultTableModel) tblPinturas.getModel();
+        model.setRowCount(0);
+        for (Pintura p : pinturas) {
+            model.addRow(new Object[]{
+                p.getIdObra(),
+                p.getTitulo(),
+                p.getAutor(),
+                p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
+                p.getPrecio(),
+                p.getEstado(),
+                p.getTecnica(),
+                p.getDimensiones()
+            });
+        }
+
+        if (pinturas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pinturas para mostrar.");
+        }
     }//GEN-LAST:event_btnListarPinturasActionPerformed
 
 

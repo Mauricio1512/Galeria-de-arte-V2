@@ -20,6 +20,13 @@ public class ServicioObraArte implements IServicioObraArte {
         if (obra == null) {
             throw new IllegalArgumentException("La obra no puede ser null");
         }
+
+        for (ObraArte o : listaObras) {
+            if (o.getIdObra() == obra.getIdObra()) {
+                throw new IllegalArgumentException("El ID " + obra.getIdObra() + " ya existe.");
+            }
+        }
+
         listaObras.add(obra);
     }
 
@@ -27,27 +34,32 @@ public class ServicioObraArte implements IServicioObraArte {
     public List<ObraArte> listarObras() {
         return new ArrayList<>(listaObras);
     }
-    
+
     @Override
     public List<Pintura> listarPinturas() {
         List<Pintura> pinturas = new ArrayList<>();
         for (ObraArte oa : listaObras) {
-            if (oa instanceof Pintura) {
-                pinturas.add((Pintura) oa);
+            if (oa instanceof Pintura p) {
+                if (!"Inactivo".equalsIgnoreCase(p.getEstado())) {
+                    pinturas.add((Pintura) oa);
+                }
+
             }
         }
-        return pinturas; 
+        return pinturas;
     }
-    
+
     @Override
     public List<Escultura> listarEsculturas() {
         List<Escultura> esculturas = new ArrayList<>();
         for (ObraArte oa : listaObras) {
-            if (oa instanceof Escultura) {
-                esculturas.add((Escultura) oa);
+            if (oa instanceof Escultura e) {
+                if (!"Inactivo".equalsIgnoreCase(e.getEstado())) {
+                    esculturas.add(e);
+                }
             }
         }
-        return esculturas; 
+        return esculturas;
     }
 
     @Override

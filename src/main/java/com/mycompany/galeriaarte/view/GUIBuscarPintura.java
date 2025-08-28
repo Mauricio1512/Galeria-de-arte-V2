@@ -4,6 +4,7 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.model.Escultura;
 import com.mycompany.galeriaarte.model.ObraArte;
 import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
@@ -15,14 +16,26 @@ import javax.swing.JOptionPane;
  * @author SANTIAGO
  */
 public class GUIBuscarPintura extends javax.swing.JFrame {
+
     private IServicioObraArte servicioObraArte;
+
     /**
      * Creates new form GUIAgregarObraArte
      */
     public GUIBuscarPintura(IServicioObraArte ServicioObraArte) {
-        this.servicioObraArte = new ServicioObraArte();
+        this.servicioObraArte = ServicioObraArte;
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    private void limpiarFormularioEscultura() {
+        txtTitulo.setText("");
+        txtAutor.setText("");
+        txtAnioCreacion.setText("");
+        txtPrecio.setText("");
+        txtEstado.setText("");
+        txtTecnica.setText("");
+        txtDimensiones.setText("");
     }
 
     /**
@@ -283,29 +296,34 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
 
     private void btnBuscaPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaPinturaActionPerformed
         try {
-        int idBuscado = Integer.parseInt(txtId.getText());
-        ObraArte encontrada = servicioObraArte.buscarObraArte(idBuscado);
+            int idBuscado = Integer.parseInt(txtId.getText().trim());
+            ObraArte obra = servicioObraArte.buscarObraArte(idBuscado);
 
-        if (encontrada != null) {
-            // Rellenar los campos con la información
-            txtTitulo.setText(encontrada.getTitulo());
-            txtAutor.setText(encontrada.getAutor());
-            txtAnioCreacion.setText(encontrada.getAnioCreacion() != null ? encontrada.getAnioCreacion().toString() : "");
-            txtPrecio.setText(String.valueOf(encontrada.getPrecio()));
-            txtEstado.setText(encontrada.getEstado());
-
-            // Si es una Pintura, rellenar sus campos específicos
-            if (encontrada instanceof Pintura p) {
-                txtTecnica.setText(p.getTecnica());
-                txtDimensiones.setText(p.getDimensiones());
+            if (obra == null) {
+                JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
+                limpiarFormularioEscultura();
+                return;
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
+
+            txtTitulo.setText(obra.getTitulo());
+            txtAutor.setText(obra.getAutor());
+            txtAnioCreacion.setText(String.valueOf(obra.getAnioCreacion()));
+            txtPrecio.setText(String.valueOf(obra.getPrecio()));
+            txtEstado.setText(obra.getEstado());
+
+            if (obra instanceof Pintura e) {
+                txtTecnica.setText(e.getTecnica());
+                txtDimensiones.setText(e.getDimensiones());
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El ID corresponde a una obra que no es Pintura.");
+                limpiarFormularioEscultura();
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
         }
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
-    }
-    
+
     }//GEN-LAST:event_btnBuscaPinturaActionPerformed
 
 

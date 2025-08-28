@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class GUIListarEscultura extends javax.swing.JFrame {
 
     private IServicioObraArte servicioObraArte;
+
     /**
      * Creates new form GUIAgregarObraArte
      */
@@ -131,29 +132,29 @@ public class GUIListarEscultura extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnListarPinturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPinturasActionPerformed
-     
-    List<Escultura> esculturas = servicioObraArte.listarEsculturas();
-    DefaultTableModel model = (DefaultTableModel) tblEsculturas.getModel();
-    model.setRowCount(0);
-    for (Escultura p : esculturas) {
-        model.addRow(new Object[] {
-            p.getIdObra(),
-            p.getTitulo(),
-            p.getAutor(),
-            p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
-            p.getPrecio(),
-            p.getEstado(),
-            p.getAltura(),
-            p.getVolumen(),
-            p.getTipoEscultura(),
-            p.getMaterial()
-            
-        });
-    }
-    
-    if (esculturas.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No hay esculturas para mostrar.");
-    }
+
+        List<Escultura> esculturas = servicioObraArte.listarEsculturas();
+        DefaultTableModel model = (DefaultTableModel) tblEsculturas.getModel();
+        model.setRowCount(0);
+        for (Escultura p : esculturas) {
+            model.addRow(new Object[]{
+                p.getIdObra(),
+                p.getTitulo(),
+                p.getAutor(),
+                p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
+                p.getPrecio(),
+                p.getEstado(),
+                p.getAltura(),
+                p.getVolumen(),
+                p.getTipoEscultura(),
+                p.getMaterial()
+
+            });
+        }
+
+        if (esculturas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay esculturas para mostrar.");
+        }
     }//GEN-LAST:event_btnListarPinturasActionPerformed
 
 

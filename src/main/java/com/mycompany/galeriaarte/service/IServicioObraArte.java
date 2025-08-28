@@ -20,4 +20,5 @@ public interface IServicioObraArte {
     void eliminarObraArte(int id);
 
     ObraArte buscarObraArte(int id);
+    
 }
