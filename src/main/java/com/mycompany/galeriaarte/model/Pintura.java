@@ -16,10 +16,20 @@ public class Pintura extends ObraArte {
 
     private String dimensiones;
 
+    private CertificadoAutenticidad certificado;
+
     public Pintura(int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado, String tecnica, String dimensiones) {
         super(idObra, titulo, autor, anioCreacion, precio, estado);
         this.tecnica = tecnica;
         this.dimensiones = dimensiones;
+    }
+
+    public CertificadoAutenticidad getCertificado() {
+        return certificado;
+    }
+
+    public void setCertificado(CertificadoAutenticidad certificado) {
+        this.certificado = certificado;
     }
 
     public String getTecnica() {

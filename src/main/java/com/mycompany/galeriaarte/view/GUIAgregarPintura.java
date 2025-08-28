@@ -4,6 +4,7 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.model.CertificadoAutenticidad;
 import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 public class GUIAgregarPintura extends javax.swing.JFrame {
 
     private final IServicioObraArte servicioObraArte;
+    private CertificadoAutenticidad certTemp;
 
     public GUIAgregarPintura(IServicioObraArte ServicioObraArte) {
         this.servicioObraArte = ServicioObraArte;
@@ -46,14 +48,14 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         txtAutor = new javax.swing.JTextField();
         txtAnioCreacion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
-        txtEstado = new javax.swing.JTextField();
         txtTecnica = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtDimensiones = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        btnCertificado = new javax.swing.JButton();
+        txtEstado = new javax.swing.JComboBox<>();
         jbtnSalir = new javax.swing.JButton();
         btnAgregarObra = new javax.swing.JButton();
 
@@ -101,12 +103,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
             }
         });
 
-        txtEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstadoActionPerformed(evt);
-            }
-        });
-
         txtTecnica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTecnicaActionPerformed(evt);
@@ -126,11 +122,17 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("aaaa-MM-dd");
 
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Activo/Inactivo");
-
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("Ej: 140x30");
+
+        btnCertificado.setText("Generar Certificado");
+        btnCertificado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCertificadoActionPerformed(evt);
+            }
+        });
+
+        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,31 +146,33 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel2)
                                             .addComponent(jLabel3)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7))
+                                            .addComponent(jLabel6))
                                         .addGap(8, 8, 8)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtTecnica, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtDimensiones, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel10))
+                                    .addComponent(jLabel10)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCertificado, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 102, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -201,8 +205,7 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -212,7 +215,9 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(txtDimensiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCertificado)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jbtnSalir.setText("Salir");
@@ -278,10 +283,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
 
-    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoActionPerformed
-
     private void txtTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTecnicaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTecnicaActionPerformed
@@ -307,11 +308,18 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         autor = txtAutor.getText().trim();
         anioCreacion = LocalDate.parse(txtAnioCreacion.getText().trim());
         precio = Double.parseDouble(txtPrecio.getText().trim());
-        estado = txtEstado.getText().trim();
+        estado = txtEstado.getSelectedItem().toString().trim();
         tecnica = txtTecnica.getText().trim();
         dimensiones = txtDimensiones.getText().trim();
-
+        
+        
+        
         pint = new Pintura(idObra, titulo, autor, anioCreacion, precio, estado, tecnica, dimensiones);
+        
+        if (certTemp != null) {
+                pint.setCertificado(certTemp);
+            }
+        
         try {
             servicioObraArte.añadirObraArte(pint /* o esc */);
             JOptionPane.showMessageDialog(this, "Pintura agregada exitosamente.");
@@ -324,17 +332,29 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         txtAutor.setText("");
         txtAnioCreacion.setText("");
         txtPrecio.setText("");
-        txtEstado.setText("");
         txtTecnica.setText("");
         txtDimensiones.setText("");
+        certTemp = null; 
     }//GEN-LAST:event_btnAgregarObraActionPerformed
+
+    private void btnCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCertificadoActionPerformed
+        GUICertificadoAutenticidad dialog = new GUICertificadoAutenticidad(this, true); // modal = true
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+
+        // al cerrar, recuperamos el resultado:
+        certTemp = dialog.getResultado(); // puede ser null si el usuario canceló
+        if (certTemp != null) {
+            JOptionPane.showMessageDialog(this, "Certificado cargado: " + certTemp.getNumeroCertificado());
+        }
+    }//GEN-LAST:event_btnCertificadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarObra;
+    private javax.swing.JButton btnCertificado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -349,7 +369,7 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
     private javax.swing.JTextField txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtDimensiones;
-    private javax.swing.JTextField txtEstado;
+    private javax.swing.JComboBox<String> txtEstado;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtTecnica;

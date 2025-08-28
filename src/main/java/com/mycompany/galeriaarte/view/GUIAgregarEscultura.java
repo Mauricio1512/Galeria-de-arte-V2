@@ -46,17 +46,16 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         txtAutor = new javax.swing.JTextField();
         txtAnioCreacion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
-        txtEstado = new javax.swing.JTextField();
         txtAltura = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtVolumen = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtTipoEscultura = new javax.swing.JComboBox<>();
         txtMaterial = new javax.swing.JComboBox<>();
+        txtEstado = new javax.swing.JComboBox<>();
         jbtnSalir = new javax.swing.JButton();
         btnAgregarObra = new javax.swing.JButton();
 
@@ -104,12 +103,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
             }
         });
 
-        txtEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstadoActionPerformed(evt);
-            }
-        });
-
         txtAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAlturaActionPerformed(evt);
@@ -129,9 +122,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("aaaa-MM-dd");
 
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Activo/Inactivo");
-
         jLabel13.setText("Tipo Escultura:");
 
         jLabel14.setText("Material:");
@@ -139,6 +129,8 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         txtTipoEscultura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUSTO", "ESTATUA", "RELIEVE", "FIGURATIVA", "ABSTRACTA", "MONUMENTO" }));
 
         txtMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARMOL", "BRONCE", "MADERA", "ARCILLA", "RESINA", "HIERRO", "PIEDRA", " ", " " }));
+
+        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         javax.swing.GroupLayout JPanelLayout = new javax.swing.GroupLayout(JPanel);
         JPanel.setLayout(JPanelLayout);
@@ -173,18 +165,16 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                                             .addGap(8, 8, 8)
                                             .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addComponent(jLabel10)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 102, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -217,8 +207,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -304,7 +293,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         autor = txtAutor.getText().trim();
         anioCreacion = LocalDate.parse(txtAnioCreacion.getText().trim());
         precio = Double.parseDouble(txtPrecio.getText().trim());
-        estado = txtEstado.getText().trim();
+        estado = txtEstado.getSelectedItem().toString().trim();
         altura = Double.parseDouble(txtAltura.getText().trim());
         volumen = Double.parseDouble(txtVolumen.getText().trim());
         tipoEscultura = txtTipoEscultura.getSelectedItem().toString().trim();
@@ -323,7 +312,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         txtAutor.setText("");
         txtAnioCreacion.setText("");
         txtPrecio.setText("");
-        txtEstado.setText("");
         txtAltura.setText("");
         txtVolumen.setText("");
     }//GEN-LAST:event_btnAgregarObraActionPerformed
@@ -335,10 +323,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
     private void txtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlturaActionPerformed
-
-    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoActionPerformed
 
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
@@ -362,7 +346,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarObra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -377,7 +360,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
     private javax.swing.JTextField txtAltura;
     private javax.swing.JTextField txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtEstado;
+    private javax.swing.JComboBox<String> txtEstado;
     private javax.swing.JTextField txtId;
     private javax.swing.JComboBox<String> txtMaterial;
     private javax.swing.JTextField txtPrecio;

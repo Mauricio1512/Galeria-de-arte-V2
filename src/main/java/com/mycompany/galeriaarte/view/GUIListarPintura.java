@@ -4,6 +4,7 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.model.CertificadoAutenticidad;
 import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
@@ -57,7 +58,7 @@ public class GUIListarPintura extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IdObra", "Titulo", "Autor", "Año de Creación", "Precio", "Estado", "Técnica", "Dimensiones"
+                "IdObra", "Titulo", "Autor", "Año de Creación", "Precio", "Estado", "Técnica", "Dimensiones", "N° Certificado", "Entidad", "Emisión"
             }
         ));
         jScrollPane1.setViewportView(tblPinturas);
@@ -136,6 +137,11 @@ public class GUIListarPintura extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblPinturas.getModel();
         model.setRowCount(0);
         for (Pintura p : pinturas) {
+
+            CertificadoAutenticidad c = p.getCertificado();
+            String num = (c != null) ? c.getNumeroCertificado() : "N/A";
+            String ent = (c != null) ? c.getEntidadEmisora() : "N/A";
+            String fecha = (c != null) ? String.valueOf(c.getFechaEmision()) : "N/A";
             model.addRow(new Object[]{
                 p.getIdObra(),
                 p.getTitulo(),
@@ -144,7 +150,8 @@ public class GUIListarPintura extends javax.swing.JFrame {
                 p.getPrecio(),
                 p.getEstado(),
                 p.getTecnica(),
-                p.getDimensiones()
+                p.getDimensiones(),
+                num, ent, fecha
             });
         }
 
