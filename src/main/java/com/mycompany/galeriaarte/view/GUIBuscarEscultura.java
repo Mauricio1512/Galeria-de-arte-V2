@@ -5,6 +5,7 @@
 package com.mycompany.galeriaarte.view;
 
 import com.mycompany.galeriaarte.model.Escultura;
+import com.mycompany.galeriaarte.model.IFragilidad;
 import com.mycompany.galeriaarte.model.ObraArte;
 import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 public class GUIBuscarEscultura extends javax.swing.JFrame {
 
     private IServicioObraArte servicioObraArte;
+    private Escultura esculturaActual;
 
     /**
      * Creates new form GUIAgregarObraArte
@@ -72,6 +74,8 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
         txtVolumen = new javax.swing.JTextField();
         txtMaterial = new javax.swing.JTextField();
         txtTipo = new javax.swing.JTextField();
+        btncalFragilidad = new javax.swing.JButton();
+        txtFragilidad = new javax.swing.JTextField();
         jbtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -172,6 +176,13 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
             }
         });
 
+        btncalFragilidad.setText("Calcular Fragilidad");
+        btncalFragilidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncalFragilidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -179,7 +190,6 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -196,7 +206,6 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addGap(8, 8, 8)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,9 +214,18 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 214, Short.MAX_VALUE)))
-                .addContainerGap())
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(67, 67, 67)
+                                        .addComponent(btncalFragilidad))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                                        .addComponent(txtFragilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(15, 15, 15))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,11 +267,15 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFragilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btncalFragilidad)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -292,7 +314,7 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(49, Short.MAX_VALUE)))
+                    .addContainerGap(48, Short.MAX_VALUE)))
         );
 
         pack();
@@ -341,12 +363,14 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
             txtEstado.setText(obra.getEstado());
 
             if (obra instanceof Escultura e) {
+                esculturaActual = e;
                 txtAltura.setText(String.valueOf(e.getAltura()));
                 txtVolumen.setText(String.valueOf(e.getVolumen()));
                 txtTipo.setText(e.getTipoEscultura());
                 txtMaterial.setText(e.getMaterial());
 
             } else {
+                esculturaActual = null;
                 JOptionPane.showMessageDialog(this, "El ID corresponde a una obra que no es Escultura.");
                 limpiarFormularioEscultura();
             }
@@ -373,9 +397,22 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoActionPerformed
 
+    private void btncalFragilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalFragilidadActionPerformed
+        if (esculturaActual == null) {
+        JOptionPane.showMessageDialog(this, "Primero busque una escultura.");
+        return;
+    }
+    IFragilidad calc = esculturaActual;
+    double frag = calc.calcularFragilidad();
+
+    txtFragilidad.setText(String.format("%.2f", frag));
+    JOptionPane.showMessageDialog(this, "Fragilidad: " + String.format("%.2f", frag));
+    }//GEN-LAST:event_btncalFragilidadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscaEscultura;
+    private javax.swing.JButton btncalFragilidad;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -393,6 +430,7 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
     private javax.swing.JTextField txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtFragilidad;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMaterial;
     private javax.swing.JTextField txtPrecio;

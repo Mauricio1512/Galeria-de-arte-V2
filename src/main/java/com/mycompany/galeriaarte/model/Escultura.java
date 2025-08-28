@@ -17,10 +17,8 @@ public class Escultura extends ObraArte implements IFragilidad {
     private double volumen;
 
     private String tipoEscultura;
-    
+
     private String material;
-    
-    private double peso;
 
     public Escultura(double altura, double volumen, String tipoEscultura, String material, int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado) {
         super(idObra, titulo, autor, anioCreacion, precio, estado);
@@ -28,7 +26,6 @@ public class Escultura extends ObraArte implements IFragilidad {
         this.volumen = volumen;
         this.tipoEscultura = tipoEscultura;
         this.material = material;
-        this.peso = peso;
     }
 
     public double getAltura() {
@@ -62,24 +59,19 @@ public class Escultura extends ObraArte implements IFragilidad {
     public void setMaterial(String material) {
         this.material = material;
     }
-    
+
     @Override
-    public double calcularFragilidad() 
-    {
-   
-        return (altura / (peso + 1)) * (material.equalsIgnoreCase("vidrio") ? 2 : 1);
+    public double calcularFragilidad() {
+
+        return (altura / (volumen + 1)) * (material.equalsIgnoreCase("VIDRIO") ? 2 : 1);
     }
 
     @Override
-    public String toString() 
-    {
-        return super.toString() + 
-               ", Material: " + material +
-               ", Peso: " + peso +
-               ", Altura: " + altura +
-               ", Fragilidad: " + calcularFragilidad();
+    public String toString() {
+        return super.toString()
+                + ", Material: " + material
+                + ", Volumen: " + volumen
+                + ", Altura: " + altura
+                + ", Fragilidad: " + calcularFragilidad();
     }
 }
-    
-    
-

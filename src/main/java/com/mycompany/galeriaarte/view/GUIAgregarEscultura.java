@@ -138,7 +138,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
 
         txtTipoEscultura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUSTO", "ESTATUA", "RELIEVE", "FIGURATIVA", "ABSTRACTA", "MONUMENTO" }));
 
-        txtMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARMOL", "BRONCE", "MADERA", "ARCILLA", "RESINA", "HIERRO", "PIEDRA" }));
+        txtMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARMOL", "BRONCE", "MADERA", "ARCILLA", "RESINA", "HIERRO", "PIEDRA", " ", " " }));
 
         javax.swing.GroupLayout JPanelLayout = new javax.swing.GroupLayout(JPanel);
         JPanel.setLayout(JPanelLayout);
