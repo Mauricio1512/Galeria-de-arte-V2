@@ -60,6 +60,69 @@ public class Escultura extends ObraArte {
         this.material = material;
     }
 
+package com.mycompany.galeriaarte.model;
+
+public class Escultura extends ObraArte implements IFragilidad 
+{
+
+    private String material;
+    private double peso;
+    private double altura;
+
+    public Escultura(int idObra, String titulo, String autor, String material, double peso, double altura) 
+    {
+        super(idObra, titulo, autor);
+        this.material = material;
+        this.peso = peso;
+        this.altura = altura;
+    }
+
+    public String getMaterial() 
+    {
+        return material;
+    }
+
+    public void setMaterial(String material)
+    {
+        this.material = material;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) 
+    {
+        this.peso = peso;
+    }
+
+    public double getAltura() 
+    {
+        return altura;
+    }
+
+    public void setAltura(double altura) 
+    {
+        this.altura = altura;
+    }
+
+    @Override
+    public double calcularFragilidad() 
+    {
+   
+        return (altura / (peso + 1)) * (material.equalsIgnoreCase("vidrio") ? 2 : 1);
+    }
+
+    @Override
+    public String toString() 
+    {
+        return super.toString() + 
+               ", Material: " + material +
+               ", Peso: " + peso +
+               ", Altura: " + altura +
+               ", Fragilidad: " + calcularFragilidad();
+    }
+}
     
     
 }
