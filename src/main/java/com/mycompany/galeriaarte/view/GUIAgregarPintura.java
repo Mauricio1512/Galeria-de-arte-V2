@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+// Refactorizado con SOLID - GUIAgregarPintura
 package com.mycompany.galeriaarte.view;
 
 import com.mycompany.galeriaarte.model.CertificadoAutenticidad;
 import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
-import com.mycompany.galeriaarte.service.ServicioObraArte;
+import com.mycompany.galeriaarte.validator.ValidarFormulario;
+import com.mycompany.galeriaarte.validator.ConversorFormulario;
+
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
@@ -293,45 +292,40 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
 
     private void btnAgregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarObraActionPerformed
         try {
+            String idTxt = txtId.getText().trim();
+            String tituloTxt = txtTitulo.getText().trim();
+            String autorTxt = txtAutor.getText().trim();
+            String anioCreacionTxt = txtAnioCreacion.getText().trim();
+            String precioTxt = txtPrecio.getText().trim();
+            String tecnicaTxt = txtTecnica.getText().trim();
+            String dimensionesTxt = txtDimensiones.getText().trim();
 
-            if (txtId.getText().trim().isEmpty()
-                    || txtTitulo.getText().trim().isEmpty()
-                    || txtAutor.getText().trim().isEmpty()
-                    || txtAnioCreacion.getText().trim().isEmpty()
-                    || txtPrecio.getText().trim().isEmpty()
-                    || txtTecnica.getText().trim().isEmpty()
-                    || txtDimensiones.getText().trim().isEmpty()) {
-
+            if (ValidarFormulario.camposObligatoriosVacios(idTxt, tituloTxt, autorTxt,
+                    anioCreacionTxt, precioTxt, tecnicaTxt, dimensionesTxt)) {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos obligatorios.");
                 return;
             }
 
-            int idObra;
-            double precio;
-            LocalDate anioCreacion;
-
-            try {
-                idObra = Integer.parseInt(txtId.getText().trim());
-            } catch (NumberFormatException ex) {
+            if (!ValidarFormulario.esEnteroValido(idTxt)) {
                 JOptionPane.showMessageDialog(this, "El ID debe ser un número entero.");
                 return;
             }
 
-            try {
-                precio = Double.parseDouble(txtPrecio.getText().trim());
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "El precio debe ser numérico.");
+            if (!ValidarFormulario.esDecimalValido(precioTxt)) {
+                JOptionPane.showMessageDialog(this, "El precio y dimensiones debe ser un número decimal.");
                 return;
             }
 
-            try {
-
-                anioCreacion = LocalDate.parse(txtAnioCreacion.getText().trim());
-            } catch (Exception ex) {
+            if (!ValidarFormulario.esFechaValida(anioCreacionTxt)) {
                 JOptionPane.showMessageDialog(this, "La fecha debe tener formato yyyy-MM-dd.");
                 return;
             }
 
+            // Convertir datos
+            int idObra = ConversorFormulario.convertirEntero(idTxt);
+            double precio = ConversorFormulario.convertirDouble(precioTxt);
+            LocalDate anioCreacion = ConversorFormulario.convertirFecha(anioCreacionTxt);
+            
             String titulo = txtTitulo.getText().trim();
             String autor = txtAutor.getText().trim();
             String estado = txtEstado.getSelectedItem().toString().trim();

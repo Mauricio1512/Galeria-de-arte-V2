@@ -20,10 +20,6 @@ public class Escultura extends ObraArte implements IFragilidad {
 
     private String material;
     
-    private String prueba;
-    
-    private String ayuda;
-
     public Escultura(double altura, double volumen, String tipoEscultura, String material, int idObra, String titulo, String autor, LocalDate anioCreacion, double precio, String estado) {
         super(idObra, titulo, autor, anioCreacion, precio, estado);
         this.altura = altura;
