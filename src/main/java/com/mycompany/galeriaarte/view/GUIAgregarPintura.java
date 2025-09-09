@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class GUIAgregarPintura extends javax.swing.JFrame {
 
-    private final IServicioObraArte servicioObraArte;
+    private  IServicioObraArte servicioObraArte;
     private CertificadoAutenticidad certTemp;
 
     public GUIAgregarPintura(IServicioObraArte ServicioObraArte) {

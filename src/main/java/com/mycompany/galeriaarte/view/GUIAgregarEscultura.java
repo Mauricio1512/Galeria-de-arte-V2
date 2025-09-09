@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class GUIAgregarEscultura extends javax.swing.JFrame {
 
-    private final IServicioObraArte servicioObraArte;
+    private IServicioObraArte servicioObraArte;
 
     public GUIAgregarEscultura(IServicioObraArte ServicioObraArte) {
         this.servicioObraArte = ServicioObraArte;
