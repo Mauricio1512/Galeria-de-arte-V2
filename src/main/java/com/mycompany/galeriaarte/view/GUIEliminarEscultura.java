@@ -77,6 +77,7 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
         jbtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Eliminar Escultura");
 
         btnBuscarEscultura.setText("Buscar Escultura");
         btnBuscarEscultura.addActionListener(new java.awt.event.ActionListener() {

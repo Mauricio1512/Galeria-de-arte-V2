@@ -60,6 +60,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         btnAgregarObra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar Escultura");
 
         JPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

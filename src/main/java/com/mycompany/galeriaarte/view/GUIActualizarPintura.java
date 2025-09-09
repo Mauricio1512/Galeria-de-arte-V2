@@ -81,6 +81,7 @@ public class GUIActualizarPintura extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Actualizar Pintura");
 
         btnBuscaPintura.setText("Buscar Pintura");
         btnBuscaPintura.addActionListener(new java.awt.event.ActionListener() {
