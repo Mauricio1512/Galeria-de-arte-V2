@@ -91,7 +91,7 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Buscar Escultura");
+        jLabel2.setText("Actualizar Escultura");
 
         jLabel3.setText("Id:");
 
