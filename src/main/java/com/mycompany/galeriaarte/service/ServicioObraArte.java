@@ -11,6 +11,22 @@ import java.util.Optional;
 
 public class ServicioObraArte implements IServicioObraArte {
 
+    private  List<IObservadorObraArte> observadores = new ArrayList<>();;
+
+    public void addObservador(IObservadorObraArte obs) {
+        observadores.add(obs);
+    }
+
+    public void removeObservador(IObservadorObraArte obs) {
+        observadores.remove(obs);
+    }
+
+    private void notificarObservadores() {
+        for (IObservadorObraArte obs : observadores) {
+            obs.actualizarDatos();
+        }
+    }
+
     private List<ObraArte> listaObras = new ArrayList<>();
 
     private static ServicioObraArte servicioObraArte;
@@ -18,7 +34,8 @@ public class ServicioObraArte implements IServicioObraArte {
     private ServicioObraArte() {
 
     }
-
+    
+    
     public static synchronized ServicioObraArte getInstance() {
 
         if (servicioObraArte == null) {
@@ -26,7 +43,7 @@ public class ServicioObraArte implements IServicioObraArte {
         }
         return servicioObraArte;
     }
-
+    
     @Override
     public void añadirObraArte(ObraArte obra) {
         if (obra == null) {
@@ -40,6 +57,7 @@ public class ServicioObraArte implements IServicioObraArte {
         }
 
         listaObras.add(obra);
+        notificarObservadores(); // 🚨 avisamos a las ventanas
     }
 
     @Override
@@ -53,9 +71,8 @@ public class ServicioObraArte implements IServicioObraArte {
         for (ObraArte oa : listaObras) {
             if (oa instanceof Pintura p) {
                 if (!"Inactivo".equalsIgnoreCase(p.getEstado())) {
-                    pinturas.add((Pintura) oa);
+                    pinturas.add(p);
                 }
-
             }
         }
         return pinturas;
@@ -72,19 +89,6 @@ public class ServicioObraArte implements IServicioObraArte {
             }
         }
         return esculturas;
-    }
-
-    @Override
-    public void eliminarObraArte(int id) {
-        listaObras.removeIf(o -> o.getIdObra() == id);
-    }
-
-    @Override
-    public ObraArte buscarObraArte(int id) {
-        Optional<ObraArte> resultado = listaObras.stream()
-                .filter(o -> o.getIdObra() == id)
-                .findFirst();
-        return resultado.orElse(null);
     }
 
     @Override
@@ -112,6 +116,8 @@ public class ServicioObraArte implements IServicioObraArte {
 
         // ---- Certificado (política: si viene null, se quita; si viene no-null, se asigna)
         p.setCertificado(cert);
+        
+        notificarObservadores();
     }
 
     @Override
@@ -138,6 +144,28 @@ public class ServicioObraArte implements IServicioObraArte {
         e.setVolumen(volumen);
         e.setTipoEscultura(tipoEscultura);
         e.setMaterial(material);
+        
+        notificarObservadores();
     }
 
+    @Override
+    public void eliminarObraArte(int id) {
+
+        for (ObraArte obra : listaObras) {
+            if (obra.getIdObra() == id) {
+                obra.setEstado("Inactivo");
+                notificarObservadores(); // 👈 Avisamos a todos los observadores
+                return;
+            }
+        }
+
+    }
+
+    @Override
+    public ObraArte buscarObraArte(int id) {
+        Optional<ObraArte> resultado = listaObras.stream()
+                .filter(o -> o.getIdObra() == id)
+                .findFirst();
+        return resultado.orElse(null);
+    }
 }

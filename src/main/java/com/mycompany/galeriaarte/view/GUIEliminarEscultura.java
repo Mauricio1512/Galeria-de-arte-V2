@@ -383,14 +383,21 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Primero busque una escultura.");
             return;
         }
-        int opt = JOptionPane.showConfirmDialog(this,
+
+        int opt = JOptionPane.showConfirmDialog(
+                this,
                 "¿Marcar como INACTIVA la escultura ID " + esculturaActual.getIdObra() + "?",
-                "Confirmar", JOptionPane.YES_NO_OPTION);
+                "Confirmar",
+                JOptionPane.YES_NO_OPTION
+        );
+
         if (opt == JOptionPane.YES_OPTION) {
-            esculturaActual.setEstado("Inactivo");
-            txtEstado.setText("Inactivo");
+            servicioObraArte.eliminarObraArte(esculturaActual.getIdObra());
+
             JOptionPane.showMessageDialog(this, "Escultura marcada como INACTIVA.");
+            limpiarFormularioEscultura();
         }
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
@@ -400,7 +407,6 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
     private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaterialActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarEscultura;

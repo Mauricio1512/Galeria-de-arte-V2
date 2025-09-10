@@ -9,6 +9,8 @@ import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import com.mycompany.galeriaarte.validator.ValidarFormulario;
+import com.mycompany.galeriaarte.validator.ConversorFormulario;
 
 /**
  *
@@ -80,6 +82,12 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
 
         jLabel7.setText("Estado:");
 
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
@@ -128,10 +136,20 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         jLabel14.setText("Material:");
 
         txtTipoEscultura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUSTO", "ESTATUA", "RELIEVE", "FIGURATIVA", "ABSTRACTA", "MONUMENTO" }));
+        txtTipoEscultura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoEsculturaActionPerformed(evt);
+            }
+        });
 
         txtMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARMOL", "BRONCE", "MADERA", "ARCILLA", "RESINA", "HIERRO", "PIEDRA", " ", " " }));
 
         txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        txtEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEstadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPanelLayout = new javax.swing.GroupLayout(JPanel);
         JPanel.setLayout(JPanelLayout);
@@ -277,41 +295,38 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
 
     private void btnAgregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarObraActionPerformed
         try {
-            
-            if (txtId.getText().trim().isEmpty()
-                    || txtTitulo.getText().trim().isEmpty()
-                    || txtAutor.getText().trim().isEmpty()
-                    || txtAnioCreacion.getText().trim().isEmpty()
-                    || txtPrecio.getText().trim().isEmpty()
-                    || txtAltura.getText().trim().isEmpty()
-                    || txtVolumen.getText().trim().isEmpty()) {
+            String idTxt = txtId.getText().trim();
+            String tituloTxt = txtTitulo.getText().trim();
+            String autorTxt = txtAutor.getText().trim();
+            String anioCreacionTxt = txtAnioCreacion.getText().trim();
+            String precioTxt = txtPrecio.getText().trim();
+            String alturaTxt = txtAltura.getText().trim();
+            String volumenTxt = txtVolumen.getText().trim();
 
-                JOptionPane.showMessageDialog(this, "Debe completar todos los campos obligatorios.");
+            if (ValidarFormulario.camposObligatoriosVacios(idTxt, tituloTxt, autorTxt, anioCreacionTxt, precioTxt, alturaTxt, volumenTxt)) {
+                JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
+                return;
+            }
+            if (!ValidarFormulario.esEnteroValido(idTxt)) {
+                JOptionPane.showMessageDialog(this, "El id de la la escultura debe ser un entero");
+                return;
+            }
+            if (!ValidarFormulario.esDecimalValido(precioTxt, alturaTxt, volumenTxt)) {
+                JOptionPane.showMessageDialog(this, "El precio, altura y volumen deben ser valores decimales");
+                return;
+            }
+            if (!ValidarFormulario.esFechaValida(anioCreacionTxt)) {
+                JOptionPane.showMessageDialog(this, "El año de creacion debe tener el formato indicado");
                 return;
             }
 
-            
-            int idObra = Integer.parseInt(txtId.getText().trim());
-            String titulo = txtTitulo.getText().trim();
-            String autor = txtAutor.getText().trim();
-
-            
-            LocalDate anioCreacion;
+            //double precio;
+            //double altura;
+            //double volumen;
             try {
-                anioCreacion = LocalDate.parse(txtAnioCreacion.getText().trim()); // yyyy-MM-dd
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser yyyy-MM-dd.");
-                return;
-            }
-
-            
-            double precio;
-            double altura;
-            double volumen;
-            try {
-                precio = Double.parseDouble(txtPrecio.getText().trim());
-                altura = Double.parseDouble(txtAltura.getText().trim());
-                volumen = Double.parseDouble(txtVolumen.getText().trim());
+                //precio = Double.parseDouble(txtPrecio.getText().trim());
+                //altura = Double.parseDouble(txtAltura.getText().trim());
+                //volumen = Double.parseDouble(txtVolumen.getText().trim());
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Precio, altura y volumen deben ser valores numéricos.");
                 return;
@@ -320,6 +335,16 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
             String estado = txtEstado.getSelectedItem().toString().trim();
             String tipoEscultura = txtTipoEscultura.getSelectedItem().toString().trim();
             String material = txtMaterial.getSelectedItem().toString().trim();
+
+            int idObra = ConversorFormulario.convertirEntero(idTxt);
+            double precio = ConversorFormulario.convertirDouble(precioTxt);
+            double altura = ConversorFormulario.convertirDouble(alturaTxt);
+            double volumen = ConversorFormulario.convertirDouble(volumenTxt);
+            LocalDate anioCreacion = LocalDate.parse(anioCreacionTxt);
+
+            // Resto de datos (que siguen siendo String)
+            String titulo = txtTitulo.getText().trim();
+            String autor = txtAutor.getText().trim();
 
             Escultura esc = new Escultura(altura, volumen, tipoEscultura, material,
                     idObra, titulo, autor, anioCreacion, precio, estado);
@@ -332,7 +357,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                 return;
             }
 
-            
             txtId.setText("");
             txtTitulo.setText("");
             txtAutor.setText("");
@@ -371,6 +395,17 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTituloActionPerformed
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstadoActionPerformed
+
+    private void txtTipoEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoEsculturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoEsculturaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel;

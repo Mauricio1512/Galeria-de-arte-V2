@@ -162,32 +162,29 @@ public class GUICertificadoAutenticidad extends javax.swing.JDialog {
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         try {
-        String numeroCertificado = txtNCertificado.getText().trim();
-        String entidadEmisora = txtEntidad.getText().trim();
-        String fechaEmision = txtFEmision.getText().trim();  
+            String numeroCertificado = txtNCertificado.getText().trim();
+            String entidadEmisora = txtEntidad.getText().trim();
+            String fechaEmision = txtFEmision.getText().trim();
 
-        
-        if (numeroCertificado.isEmpty() || entidadEmisora.isEmpty() || fechaEmision.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Completa todos los campos del certificado.");
-            return;
+            if (numeroCertificado.isEmpty() || entidadEmisora.isEmpty() || fechaEmision.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Completa todos los campos del certificado.");
+                return;
+            }
+
+            LocalDate fecha = LocalDate.parse(fechaEmision);
+
+            resultado = new CertificadoAutenticidad(numeroCertificado, fecha, entidadEmisora);
+            dispose();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Revisa la fecha (yyyy-MM-dd) y los campos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-       
-        LocalDate fecha = LocalDate.parse(fechaEmision);  
-
-        resultado = new CertificadoAutenticidad(numeroCertificado, fecha, entidadEmisora);
-        dispose(); 
-
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Revisa la fecha (yyyy-MM-dd) y los campos.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
 
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
     private javax.swing.JLabel jLabel1;

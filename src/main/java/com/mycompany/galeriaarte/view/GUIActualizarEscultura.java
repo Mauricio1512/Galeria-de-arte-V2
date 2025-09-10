@@ -9,6 +9,7 @@ import com.mycompany.galeriaarte.model.IFragilidad;
 import com.mycompany.galeriaarte.model.ObraArte;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -76,6 +77,7 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
         btncalFragilidad = new javax.swing.JButton();
         txtFragilidad = new javax.swing.JTextField();
         jbtnSalir = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Actualizar Escultura");
@@ -286,14 +288,24 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
             }
         });
 
+        btnActualizar.setText("Actualizar Pintura");
+        btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(btnActualizar)
+                .addGap(75, 75, 75)
                 .addComponent(btnBuscaEscultura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jbtnSalir)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +320,8 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
                 .addContainerGap(349, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscaEscultura)
-                    .addComponent(jbtnSalir))
+                    .addComponent(jbtnSalir)
+                    .addComponent(btnActualizar))
                 .addGap(19, 19, 19))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -369,10 +382,12 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
                 txtTipo.setText(e.getTipoEscultura());
                 txtMaterial.setText(e.getMaterial());
 
+                btnActualizar.setEnabled(true);
             } else {
                 esculturaActual = null;
                 JOptionPane.showMessageDialog(this, "El ID corresponde a una obra que no es Escultura.");
                 limpiarFormularioEscultura();
+                btnActualizar.setEnabled(false);
             }
 
         } catch (NumberFormatException ex) {
@@ -399,18 +414,68 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
 
     private void btncalFragilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalFragilidadActionPerformed
         if (esculturaActual == null) {
-        JOptionPane.showMessageDialog(this, "Primero busque una escultura.");
-        return;
-    }
-    IFragilidad calc = esculturaActual;
-    double frag = calc.calcularFragilidad();
+            JOptionPane.showMessageDialog(this, "Primero busque una escultura.");
+            return;
+        }
+        IFragilidad calc = esculturaActual;
+        double frag = calc.calcularFragilidad();
 
-    txtFragilidad.setText(String.format("%.2f", frag));
-    JOptionPane.showMessageDialog(this, "Fragilidad: " + String.format("%.2f", frag));
+        txtFragilidad.setText(String.format("%.2f", frag));
+        JOptionPane.showMessageDialog(this, "Fragilidad: " + String.format("%.2f", frag));
     }//GEN-LAST:event_btncalFragilidadActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        if (esculturaActual == null) {
+            JOptionPane.showMessageDialog(this, "Primero busque una escultura por ID.");
+            return;
+        }
+
+        try {
+            // Validaciones básicas
+            if (txtTitulo.getText().trim().isEmpty()
+                    || txtAutor.getText().trim().isEmpty()
+                    || txtAnioCreacion.getText().trim().isEmpty()
+                    || txtPrecio.getText().trim().isEmpty()
+                    || txtAltura.getText().trim().isEmpty()
+                    || txtVolumen.getText().trim().isEmpty()
+                    || txtTipo.getText().trim().isEmpty()
+                    || txtMaterial.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Complete todos los campos obligatorios.");
+                return;
+            }
+
+            String titulo = txtTitulo.getText().trim();
+            String autor = txtAutor.getText().trim();
+            LocalDate anio = LocalDate.parse(txtAnioCreacion.getText().trim()); // yyyy-MM-dd
+            double precio = Double.parseDouble(txtPrecio.getText().trim());
+            String estado = txtEstado.getText().trim();
+
+            // Campos específicos de escultura
+            double altura = Double.parseDouble(txtAltura.getText().trim());
+            double volumen = Double.parseDouble(txtVolumen.getText().trim());
+            String tipoEscultura = txtTipo.getText().trim(); // o getSelectedItem().toString()
+            String material = txtMaterial.getText().trim();
+
+            // Llamada al servicio
+            servicioObraArte.actualizarEscultura(
+                    esculturaActual.getIdObra(), titulo, autor, anio, precio, estado,
+                    altura, volumen, tipoEscultura, material
+            );
+
+            JOptionPane.showMessageDialog(this, "Escultura actualizada correctamente.");
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Precio, Altura y Volumen deben ser numéricos.");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscaEscultura;
     private javax.swing.JButton btncalFragilidad;
     private javax.swing.JLabel jLabel10;

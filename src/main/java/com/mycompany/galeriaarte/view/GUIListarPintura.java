@@ -6,6 +6,7 @@ package com.mycompany.galeriaarte.view;
 
 import com.mycompany.galeriaarte.model.CertificadoAutenticidad;
 import com.mycompany.galeriaarte.model.Pintura;
+import com.mycompany.galeriaarte.service.IObservadorObraArte;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author SANTIAGO
  */
-public class GUIListarPintura extends javax.swing.JFrame {
+public class GUIListarPintura extends javax.swing.JFrame implements IObservadorObraArte {
 
     private IServicioObraArte servicioObraArte;
 
@@ -27,6 +28,40 @@ public class GUIListarPintura extends javax.swing.JFrame {
         this.servicioObraArte = ServicioObraArte;
         initComponents();
         setLocationRelativeTo(null);
+        if (ServicioObraArte instanceof ServicioObraArte s) {
+            s.addObservador((IObservadorObraArte) this);
+            listar();
+        }
+
+    }
+
+    private void listar() {
+
+        List<Pintura> pinturas = servicioObraArte.listarPinturas();
+        DefaultTableModel model = (DefaultTableModel) tblPinturas.getModel();
+        model.setRowCount(0);
+        for (Pintura p : pinturas) {
+
+            CertificadoAutenticidad c = p.getCertificado();
+            String num = (c != null) ? c.getNumeroCertificado() : "N/A";
+            String ent = (c != null) ? c.getEntidadEmisora() : "N/A";
+            String fecha = (c != null) ? String.valueOf(c.getFechaEmision()) : "N/A";
+            model.addRow(new Object[]{
+                p.getIdObra(),
+                p.getTitulo(),
+                p.getAutor(),
+                p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
+                p.getPrecio(),
+                p.getEstado(),
+                p.getTecnica(),
+                p.getDimensiones(),
+                num, ent, fecha
+            });
+        }
+
+        if (pinturas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pinturas para mostrar.");
+        }
     }
 
     /**
@@ -133,34 +168,9 @@ public class GUIListarPintura extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnListarPinturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPinturasActionPerformed
+        listar();
 
-        List<Pintura> pinturas = servicioObraArte.listarPinturas();
-        DefaultTableModel model = (DefaultTableModel) tblPinturas.getModel();
-        model.setRowCount(0);
-        for (Pintura p : pinturas) {
-
-            CertificadoAutenticidad c = p.getCertificado();
-            String num = (c != null) ? c.getNumeroCertificado() : "N/A";
-            String ent = (c != null) ? c.getEntidadEmisora() : "N/A";
-            String fecha = (c != null) ? String.valueOf(c.getFechaEmision()) : "N/A";
-            model.addRow(new Object[]{
-                p.getIdObra(),
-                p.getTitulo(),
-                p.getAutor(),
-                p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
-                p.getPrecio(),
-                p.getEstado(),
-                p.getTecnica(),
-                p.getDimensiones(),
-                num, ent, fecha
-            });
-        }
-
-        if (pinturas.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No hay pinturas para mostrar.");
-        }
     }//GEN-LAST:event_btnListarPinturasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListarPinturas;
@@ -170,4 +180,18 @@ public class GUIListarPintura extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPinturas;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizarDatos() {
+        listar();
+    }
+
+    @Override
+    public void dispose() {
+        if (servicioObraArte instanceof ServicioObraArte s) {
+            s.removeObservador(this); // 👈 se desregistra del observer
+        }
+        super.dispose(); // 👈 sigue cerrando la ventana normalmente
+    }
+
 }
