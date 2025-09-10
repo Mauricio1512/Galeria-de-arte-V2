@@ -10,9 +10,27 @@ import java.util.Optional;
 public class ServicioObraArte implements IServicioObraArte {
 
     private final List<ObraArte> listaObras;
+    // 👇 Lista de observadores
+    private final List<IObservadorObraArte> observadores;
 
     public ServicioObraArte() {
         this.listaObras = new ArrayList<>();
+        this.observadores = new ArrayList<>();
+    }
+
+    // 👇 Métodos para manejar observadores
+    public void addObservador(IObservadorObraArte obs) {
+        observadores.add(obs);
+    }
+
+    public void removeObservador(IObservadorObraArte obs) {
+        observadores.remove(obs);
+    }
+
+    private void notificarObservadores() {
+        for (IObservadorObraArte obs : observadores) {
+            obs.actualizarDatos();
+        }
     }
 
     @Override
@@ -28,6 +46,7 @@ public class ServicioObraArte implements IServicioObraArte {
         }
 
         listaObras.add(obra);
+        notificarObservadores(); // 🚨 avisamos a las ventanas
     }
 
     @Override
@@ -41,9 +60,8 @@ public class ServicioObraArte implements IServicioObraArte {
         for (ObraArte oa : listaObras) {
             if (oa instanceof Pintura p) {
                 if (!"Inactivo".equalsIgnoreCase(p.getEstado())) {
-                    pinturas.add((Pintura) oa);
+                    pinturas.add(p);
                 }
-
             }
         }
         return pinturas;
@@ -66,18 +84,25 @@ public class ServicioObraArte implements IServicioObraArte {
     public void actualizarObraArte(int id, ObraArte obraActualizada) {
         for (int i = 0; i < listaObras.size(); i++) {
             if (listaObras.get(i).getIdObra() == id) {
-
                 obraActualizada.setIdObra(id);
                 listaObras.set(i, obraActualizada);
+                notificarObservadores(); // 🚨 notificamos cambio
                 return;
             }
         }
-
     }
 
     @Override
     public void eliminarObraArte(int id) {
-        listaObras.removeIf(o -> o.getIdObra() == id);
+
+        for (ObraArte obra : listaObras) {
+            if (obra.getIdObra() == id) {
+                obra.setEstado("Inactivo");
+                notificarObservadores(); // 👈 Avisamos a todos los observadores
+                return;
+            }
+        }
+
     }
 
     @Override

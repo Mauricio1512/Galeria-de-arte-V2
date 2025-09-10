@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import com.mycompany.galeriaarte.validator.ValidarFormulario;
 import com.mycompany.galeriaarte.validator.ConversorFormulario;
+
 /**
  *
  * @author SANTIAGO
@@ -24,7 +25,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -300,26 +301,24 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
             String precioTxt = txtPrecio.getText().trim();
             String alturaTxt = txtAltura.getText().trim();
             String volumenTxt = txtVolumen.getText().trim();
-            
-            if (ValidarFormulario.camposObligatoriosVacios(idTxt, tituloTxt, autorTxt, anioCreacionTxt, precioTxt, alturaTxt, volumenTxt)){
+
+            if (ValidarFormulario.camposObligatoriosVacios(idTxt, tituloTxt, autorTxt, anioCreacionTxt, precioTxt, alturaTxt, volumenTxt)) {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
                 return;
             }
-            if (!ValidarFormulario.esEnteroValido(idTxt)){
+            if (!ValidarFormulario.esEnteroValido(idTxt)) {
                 JOptionPane.showMessageDialog(this, "El id de la la escultura debe ser un entero");
                 return;
             }
-            if (!ValidarFormulario.esDecimalValido(precioTxt,alturaTxt,volumenTxt)){
+            if (!ValidarFormulario.esDecimalValido(precioTxt, alturaTxt, volumenTxt)) {
                 JOptionPane.showMessageDialog(this, "El precio, altura y volumen deben ser valores decimales");
                 return;
             }
-            if (!ValidarFormulario.esFechaValida(anioCreacionTxt)){
+            if (!ValidarFormulario.esFechaValida(anioCreacionTxt)) {
                 JOptionPane.showMessageDialog(this, "El año de creacion debe tener el formato indicado");
                 return;
             }
-            
 
-            
             //double precio;
             //double altura;
             //double volumen;
@@ -335,8 +334,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
             String estado = txtEstado.getSelectedItem().toString().trim();
             String tipoEscultura = txtTipoEscultura.getSelectedItem().toString().trim();
             String material = txtMaterial.getSelectedItem().toString().trim();
-            
-            
+
             int idObra = ConversorFormulario.convertirEntero(idTxt);
             double precio = ConversorFormulario.convertirDouble(precioTxt);
             double altura = ConversorFormulario.convertirDouble(alturaTxt);
@@ -346,7 +344,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
             // Resto de datos (que siguen siendo String)
             String titulo = txtTitulo.getText().trim();
             String autor = txtAutor.getText().trim();
-            
+
             Escultura esc = new Escultura(altura, volumen, tipoEscultura, material,
                     idObra, titulo, autor, anioCreacion, precio, estado);
 
@@ -358,7 +356,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                 return;
             }
 
-            
             txtId.setText("");
             txtTitulo.setText("");
             txtAutor.setText("");
@@ -408,7 +405,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
     private void txtTipoEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoEsculturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoEsculturaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel;

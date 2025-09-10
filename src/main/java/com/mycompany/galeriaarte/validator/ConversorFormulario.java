@@ -14,15 +14,14 @@ import java.time.format.DateTimeParseException;
 public abstract class ConversorFormulario {
 
     public static Integer convertirEntero(String valor) {
-            return Integer.parseInt(valor.trim());
-    }
-    
-    public static double convertirDouble (String valor){
-            return Double.parseDouble(valor.trim());
-    }
-    
-    public static LocalDate convertirFecha(String valor) {
-            return LocalDate.parse(valor.trim()); // yyyy-MM-dd
-        }
+        return Integer.parseInt(valor.trim());
     }
 
+    public static double convertirDouble(String valor) {
+        return Double.parseDouble(valor.trim());
+    }
+
+    public static LocalDate convertirFecha(String valor) {
+        return LocalDate.parse(valor.trim()); // yyyy-MM-dd
+    }
+}

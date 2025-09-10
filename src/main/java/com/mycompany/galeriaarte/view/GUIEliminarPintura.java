@@ -344,16 +344,22 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Primero busque una pintura.");
             return;
         }
-        int opt = JOptionPane.showConfirmDialog(this,
+
+        int opt = JOptionPane.showConfirmDialog(
+                this,
                 "¿Marcar como INACTIVA la pintura ID " + pinturaActual.getIdObra() + "?",
-                "Confirmar", JOptionPane.YES_NO_OPTION);
+                "Confirmar",
+                JOptionPane.YES_NO_OPTION
+        );
+
         if (opt == JOptionPane.YES_OPTION) {
-            pinturaActual.setEstado("Inactivo");
+            // 👇 Usamos el servicio para que notifique a los observadores
+            servicioObraArte.eliminarObraArte(pinturaActual.getIdObra());
+
             txtEstado.setText("Inactivo");
             JOptionPane.showMessageDialog(this, "Pintura marcada como INACTIVA.");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarPintura;

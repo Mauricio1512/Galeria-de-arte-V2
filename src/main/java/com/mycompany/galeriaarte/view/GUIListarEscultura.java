@@ -6,6 +6,7 @@ package com.mycompany.galeriaarte.view;
 
 import com.mycompany.galeriaarte.model.Escultura;
 import com.mycompany.galeriaarte.model.Pintura;
+import com.mycompany.galeriaarte.service.IObservadorObraArte;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author SANTIAGO
  */
-public class GUIListarEscultura extends javax.swing.JFrame {
+public class GUIListarEscultura extends javax.swing.JFrame implements IObservadorObraArte {
 
     private IServicioObraArte servicioObraArte;
 
@@ -27,6 +28,36 @@ public class GUIListarEscultura extends javax.swing.JFrame {
         this.servicioObraArte = ServicioObraArte;
         initComponents();
         setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        if (ServicioObraArte instanceof ServicioObraArte s) {
+            s.addObservador((IObservadorObraArte) this);
+            listar();
+        }
+    }
+
+    private void listar() {
+        List<Escultura> esculturas = servicioObraArte.listarEsculturas();
+        DefaultTableModel model = (DefaultTableModel) tblEsculturas.getModel();
+        model.setRowCount(0);
+        for (Escultura p : esculturas) {
+            model.addRow(new Object[]{
+                p.getIdObra(),
+                p.getTitulo(),
+                p.getAutor(),
+                p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
+                p.getPrecio(),
+                p.getEstado(),
+                p.getAltura(),
+                p.getVolumen(),
+                p.getTipoEscultura(),
+                p.getMaterial()
+
+            });
+        }
+
+        if (esculturas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay esculturas para mostrar.");
+        }
     }
 
     /**
@@ -133,30 +164,8 @@ public class GUIListarEscultura extends javax.swing.JFrame {
 
     private void btnListarPinturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPinturasActionPerformed
 
-        List<Escultura> esculturas = servicioObraArte.listarEsculturas();
-        DefaultTableModel model = (DefaultTableModel) tblEsculturas.getModel();
-        model.setRowCount(0);
-        for (Escultura p : esculturas) {
-            model.addRow(new Object[]{
-                p.getIdObra(),
-                p.getTitulo(),
-                p.getAutor(),
-                p.getAnioCreacion() != null ? p.getAnioCreacion().toString() : "",
-                p.getPrecio(),
-                p.getEstado(),
-                p.getAltura(),
-                p.getVolumen(),
-                p.getTipoEscultura(),
-                p.getMaterial()
-
-            });
-        }
-
-        if (esculturas.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No hay esculturas para mostrar.");
-        }
+        listar();
     }//GEN-LAST:event_btnListarPinturasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListarPinturas;
@@ -166,4 +175,17 @@ public class GUIListarEscultura extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblEsculturas;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizarDatos() {
+        listar();
+    }
+
+    @Override
+    public void dispose() {
+        if (servicioObraArte instanceof ServicioObraArte s) {
+            s.removeObservador(this); // 👈 se desregistra del observer
+        }
+        super.dispose(); // 👈 sigue cerrando la ventana normalmente
+    }
 }

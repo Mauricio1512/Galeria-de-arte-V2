@@ -325,7 +325,7 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
             int idObra = ConversorFormulario.convertirEntero(idTxt);
             double precio = ConversorFormulario.convertirDouble(precioTxt);
             LocalDate anioCreacion = ConversorFormulario.convertirFecha(anioCreacionTxt);
-            
+
             String titulo = txtTitulo.getText().trim();
             String autor = txtAutor.getText().trim();
             String estado = txtEstado.getSelectedItem().toString().trim();
@@ -377,7 +377,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Certificado cargado: " + certTemp.getNumeroCertificado());
         }
     }//GEN-LAST:event_btnCertificadoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarObra;

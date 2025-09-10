@@ -8,11 +8,11 @@ import java.util.List;
 public interface IServicioObraArte {
 
     void añadirObraArte(ObraArte obra);
-    
+
     List<Pintura> listarPinturas();
-    
+
     List<Escultura> listarEsculturas();
-    
+
     List<ObraArte> listarObras();
 
     void actualizarObraArte(int id, ObraArte obraActualizada);
@@ -20,5 +20,5 @@ public interface IServicioObraArte {
     void eliminarObraArte(int id);
 
     ObraArte buscarObraArte(int id);
-    
+
 }

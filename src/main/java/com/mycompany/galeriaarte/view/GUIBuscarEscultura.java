@@ -399,16 +399,15 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
 
     private void btncalFragilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalFragilidadActionPerformed
         if (esculturaActual == null) {
-        JOptionPane.showMessageDialog(this, "Primero busque una escultura.");
-        return;
-    }
-    IFragilidad calc = esculturaActual;
-    double frag = calc.calcularFragilidad();
+            JOptionPane.showMessageDialog(this, "Primero busque una escultura.");
+            return;
+        }
+        IFragilidad calc = esculturaActual;
+        double frag = calc.calcularFragilidad();
 
-    txtFragilidad.setText(String.format("%.2f", frag));
-    JOptionPane.showMessageDialog(this, "Fragilidad: " + String.format("%.2f", frag));
+        txtFragilidad.setText(String.format("%.2f", frag));
+        JOptionPane.showMessageDialog(this, "Fragilidad: " + String.format("%.2f", frag));
     }//GEN-LAST:event_btncalFragilidadActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscaEscultura;
