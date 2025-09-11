@@ -216,7 +216,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemAcercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercadeActionPerformed
-        JOptionPane.showMessageDialog(this, "Desarrollado por Santiago Arciniegas - 2220221016\n" + "Daniel Mauricio Álvarez Morales - 2420211008\n" + "Brayan Santiago Cartagena Díaz - 2220221056\n" + "Julián Camilo Aranguren Herrán - 2220231103");
+        JOptionPane.showMessageDialog(this, "Desarrollado por\n" + "Santiago Arciniegas Jiménez - 2220221016\n" + "Daniel Mauricio Álvarez Morales - 2420211008\n" + "Brayan Santiago Cartagena Díaz - 2220221056\n" + "Julián Camilo Aranguren Herrán - 2220231103");
     }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
 
     private void jMenuItemAgregarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarPinturaActionPerformed

@@ -79,12 +79,16 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
 
         jLabel7.setText("Estado:");
 
+        txtId.setToolTipText("Ingrese el Id de la Pintura");
+
+        txtTitulo.setToolTipText("Ingrese el título de la Pintura");
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
             }
         });
 
+        txtAutor.setToolTipText("Ingrese el autor de la Pintura");
         txtAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAutorActionPerformed(evt);
@@ -97,12 +101,14 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
             }
         });
 
+        txtPrecio.setToolTipText("Ingrese el precio, solo números");
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
             }
         });
 
+        txtTecnica.setToolTipText("Ingrese la técnica utilizada en la Pintura");
         txtTecnica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTecnicaActionPerformed(evt);
@@ -111,6 +117,7 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
 
         jLabel9.setText("Técnica:");
 
+        txtDimensiones.setToolTipText("Ingrese las dimensiones de la Pintura");
         txtDimensiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDimensionesActionPerformed(evt);

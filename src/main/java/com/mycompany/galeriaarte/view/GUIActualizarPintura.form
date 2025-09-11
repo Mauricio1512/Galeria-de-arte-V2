@@ -100,18 +100,18 @@
                                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="txtCertificado" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtEntidad" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtFEmision" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtDimensiones" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtTecnica" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="txtEstado" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtPrecio" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtAnioCreacion" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtAutor" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtTitulo" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                                       <Component id="txtId" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="txtEstado" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -260,11 +260,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtEstado">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEstadoActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="txtTecnica">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTecnicaActionPerformed"/>
@@ -332,6 +327,22 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Fecha Emisi&#xf3;n:"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="txtEstado">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Activo"/>
+                <StringItem index="1" value="Inactivo"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEstadoActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

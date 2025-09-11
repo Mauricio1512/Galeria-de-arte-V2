@@ -313,16 +313,16 @@ public class GUIBuscarPintura extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(406, Short.MAX_VALUE)
+                .addContainerGap(385, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscaPintura)
                     .addComponent(jbtnSalir))
-                .addGap(19, 19, 19))
+                .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(71, Short.MAX_VALUE)))
+                    .addContainerGap(59, Short.MAX_VALUE)))
         );
 
         pack();

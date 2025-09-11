@@ -211,13 +211,22 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtId">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el Id de la Pintura"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTitulo">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el t&#xed;tulo de la Pintura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTituloActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAutor">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el autor de la Pintura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAutorActionPerformed"/>
           </Events>
@@ -228,11 +237,17 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrecio">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el precio, solo n&#xfa;meros"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTecnica">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese la t&#xe9;cnica utilizada en la Pintura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTecnicaActionPerformed"/>
           </Events>
@@ -243,6 +258,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDimensiones">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las dimensiones de la Pintura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDimensionesActionPerformed"/>
           </Events>

@@ -82,18 +82,21 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
 
         jLabel7.setText("Estado:");
 
+        txtId.setToolTipText("Ingrese el Id de la Escultura");
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
             }
         });
 
+        txtTitulo.setToolTipText("Ingrese el titulo de la Escultura");
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
             }
         });
 
+        txtAutor.setToolTipText("Ingrese el autor de la Escultura");
         txtAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAutorActionPerformed(evt);
@@ -106,12 +109,14 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
             }
         });
 
+        txtPrecio.setToolTipText("Ingrese el precio, solo números");
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
             }
         });
 
+        txtAltura.setToolTipText("Ingrese la altura de la Escultura");
         txtAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAlturaActionPerformed(evt);
@@ -120,6 +125,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
 
         jLabel9.setText("Altura:");
 
+        txtVolumen.setToolTipText("Ingrese el volumen de la Escultura");
         txtVolumen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtVolumenActionPerformed(evt);
@@ -136,6 +142,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         jLabel14.setText("Material:");
 
         txtTipoEscultura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUSTO", "ESTATUA", "RELIEVE", "FIGURATIVA", "ABSTRACTA", "MONUMENTO" }));
+        txtTipoEscultura.setToolTipText("Seleccione el tipo de Escultura");
         txtTipoEscultura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTipoEsculturaActionPerformed(evt);
@@ -143,6 +150,12 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         });
 
         txtMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARMOL", "BRONCE", "MADERA", "ARCILLA", "RESINA", "HIERRO", "PIEDRA", " ", " " }));
+        txtMaterial.setToolTipText("Seleccione el tipo de Material");
+        txtMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaterialActionPerformed(evt);
+            }
+        });
 
         txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         txtEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -406,6 +419,10 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
     private void txtTipoEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoEsculturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoEsculturaActionPerformed
+
+    private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaterialActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel;

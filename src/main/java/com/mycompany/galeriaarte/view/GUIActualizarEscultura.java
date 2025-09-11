@@ -31,15 +31,16 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
     }
 
     private void limpiarFormularioEscultura() {
+        txtId.setText("");
         txtTitulo.setText("");
         txtAutor.setText("");
         txtAnioCreacion.setText("");
         txtPrecio.setText("");
-        txtEstado.setText("");
+        txtEstado.setEnabled(false);
         txtAltura.setText("");
         txtVolumen.setText("");
-        txtTipo.setText("");
-        txtMaterial.setText("");
+        txtTipo.setEnabled(false);
+        txtMaterial.setEnabled(false);
     }
 
     /**
@@ -69,13 +70,13 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
         txtAutor = new javax.swing.JTextField();
         txtAnioCreacion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
-        txtEstado = new javax.swing.JTextField();
         txtAltura = new javax.swing.JTextField();
         txtVolumen = new javax.swing.JTextField();
-        txtMaterial = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
         btncalFragilidad = new javax.swing.JButton();
         txtFragilidad = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JComboBox<>();
+        txtTipo = new javax.swing.JComboBox<>();
+        txtMaterial = new javax.swing.JComboBox<>();
         jbtnSalir = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
 
@@ -115,66 +116,39 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
 
         jLabel12.setText("Material:");
 
-        txtTitulo.setEnabled(false);
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
             }
         });
 
-        txtAutor.setEnabled(false);
         txtAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAutorActionPerformed(evt);
             }
         });
 
-        txtAnioCreacion.setEnabled(false);
         txtAnioCreacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAnioCreacionActionPerformed(evt);
             }
         });
 
-        txtPrecio.setEnabled(false);
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
             }
         });
 
-        txtEstado.setEnabled(false);
-        txtEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstadoActionPerformed(evt);
-            }
-        });
-
-        txtAltura.setEnabled(false);
         txtAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAlturaActionPerformed(evt);
             }
         });
 
-        txtVolumen.setEnabled(false);
         txtVolumen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtVolumenActionPerformed(evt);
-            }
-        });
-
-        txtMaterial.setEnabled(false);
-        txtMaterial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaterialActionPerformed(evt);
-            }
-        });
-
-        txtTipo.setEnabled(false);
-        txtTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoActionPerformed(evt);
             }
         });
 
@@ -184,6 +158,20 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
                 btncalFragilidadActionPerformed(evt);
             }
         });
+
+        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        txtEstado.setEnabled(false);
+
+        txtTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUSTO", "ESTATUA", "RELIEVE", "FIGURATIVA", "ABSTRACTA", "MONUMENTO" }));
+        txtTipo.setEnabled(false);
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoActionPerformed(evt);
+            }
+        });
+
+        txtMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARMOL", "BRONCE", "MADERA", "ARCILLA", "RESINA", "HIERRO", "PIEDRA", " ", " " }));
+        txtMaterial.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -208,22 +196,28 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addGap(8, 8, 8)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(67, 67, 67)
-                                        .addComponent(btncalFragilidad))
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(txtFragilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                                        .addComponent(txtFragilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(51, 51, 51)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtTipo, 0, 119, Short.MAX_VALUE)
+                                                    .addComponent(txtMaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(67, 67, 67)
+                                                .addComponent(btncalFragilidad)))
+                                        .addGap(0, 10, Short.MAX_VALUE)))))
                         .addGap(15, 15, 15))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -270,14 +264,13 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFragilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtFragilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btncalFragilidad)))
+                    .addComponent(btncalFragilidad)
+                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -353,10 +346,6 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
 
-    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoActionPerformed
-
     private void btnBuscaEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaEsculturaActionPerformed
 
         try {
@@ -372,15 +361,18 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
             txtTitulo.setText(obra.getTitulo());
             txtAutor.setText(obra.getAutor());
             txtAnioCreacion.setText(String.valueOf(obra.getAnioCreacion()));
+            txtEstado.setEnabled(true);
             txtPrecio.setText(String.valueOf(obra.getPrecio()));
-            txtEstado.setText(obra.getEstado());
+            txtEstado.setSelectedItem(obra.getEstado());
 
             if (obra instanceof Escultura e) {
                 esculturaActual = e;
+                txtTipo.setEnabled(true);
+                txtMaterial.setEnabled(true);
                 txtAltura.setText(String.valueOf(e.getAltura()));
                 txtVolumen.setText(String.valueOf(e.getVolumen()));
-                txtTipo.setText(e.getTipoEscultura());
-                txtMaterial.setText(e.getMaterial());
+                txtTipo.setSelectedItem(e.getTipoEscultura());
+                txtMaterial.setSelectedItem(e.getMaterial());
 
                 btnActualizar.setEnabled(true);
             } else {
@@ -403,14 +395,6 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
     private void txtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlturaActionPerformed
-
-    private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaterialActionPerformed
-
-    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoActionPerformed
 
     private void btncalFragilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalFragilidadActionPerformed
         if (esculturaActual == null) {
@@ -437,9 +421,7 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
                     || txtAnioCreacion.getText().trim().isEmpty()
                     || txtPrecio.getText().trim().isEmpty()
                     || txtAltura.getText().trim().isEmpty()
-                    || txtVolumen.getText().trim().isEmpty()
-                    || txtTipo.getText().trim().isEmpty()
-                    || txtMaterial.getText().trim().isEmpty()) {
+                    || txtVolumen.getText().trim().isEmpty()) {
 
                 JOptionPane.showMessageDialog(this, "Complete todos los campos obligatorios.");
                 return;
@@ -449,13 +431,13 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
             String autor = txtAutor.getText().trim();
             LocalDate anio = LocalDate.parse(txtAnioCreacion.getText().trim()); // yyyy-MM-dd
             double precio = Double.parseDouble(txtPrecio.getText().trim());
-            String estado = txtEstado.getText().trim();
+            String estado = txtEstado.getSelectedItem().toString().trim();
 
             // Campos específicos de escultura
             double altura = Double.parseDouble(txtAltura.getText().trim());
             double volumen = Double.parseDouble(txtVolumen.getText().trim());
-            String tipoEscultura = txtTipo.getText().trim(); // o getSelectedItem().toString()
-            String material = txtMaterial.getText().trim();
+            String tipoEscultura = txtTipo.getSelectedItem().toString().trim();
+            String material = txtMaterial.getSelectedItem().toString().trim();
 
             // Llamada al servicio
             servicioObraArte.actualizarEscultura(
@@ -464,6 +446,7 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
             );
 
             JOptionPane.showMessageDialog(this, "Escultura actualizada correctamente.");
+            limpiarFormularioEscultura();
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Precio, Altura y Volumen deben ser numéricos.");
@@ -472,6 +455,10 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -494,12 +481,12 @@ public class GUIActualizarEscultura extends javax.swing.JFrame {
     private javax.swing.JTextField txtAltura;
     private javax.swing.JTextField txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtEstado;
+    private javax.swing.JComboBox<String> txtEstado;
     private javax.swing.JTextField txtFragilidad;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtMaterial;
+    private javax.swing.JComboBox<String> txtMaterial;
     private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtTipo;
+    private javax.swing.JComboBox<String> txtTipo;
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtVolumen;
     // End of variables declaration//GEN-END:variables

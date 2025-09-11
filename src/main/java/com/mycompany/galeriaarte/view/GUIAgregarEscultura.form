@@ -223,16 +223,25 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtId">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el Id de la Escultura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTitulo">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el titulo de la Escultura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTituloActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAutor">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el autor de la Escultura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAutorActionPerformed"/>
           </Events>
@@ -243,11 +252,17 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrecio">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el precio, solo n&#xfa;meros"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAltura">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese la altura de la Escultura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAlturaActionPerformed"/>
           </Events>
@@ -258,6 +273,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtVolumen">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el volumen de la Escultura"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVolumenActionPerformed"/>
           </Events>
@@ -297,6 +315,7 @@
                 <StringItem index="5" value="MONUMENTO"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Seleccione el tipo de Escultura"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTipoEsculturaActionPerformed"/>
@@ -320,7 +339,11 @@
                 <StringItem index="8" value=" "/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Seleccione el tipo de Material"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaterialActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

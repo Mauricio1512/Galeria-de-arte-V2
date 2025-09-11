@@ -31,6 +31,7 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
     }
 
     private void limpiarFormularioEscultura() {
+        txtId.setText("");
         txtTitulo.setText("");
         txtAutor.setText("");
         txtAnioCreacion.setText("");
@@ -244,8 +245,9 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnBuscarPintura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addComponent(btnEliminar)
                 .addGap(152, 152, 152)
                 .addComponent(jbtnSalir)
