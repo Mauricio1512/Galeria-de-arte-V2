@@ -356,6 +356,8 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         );
 
         if (opt == JOptionPane.YES_OPTION) {
+            // 👇 Usamos el servicio para que notifique a los observadores
+
             servicioObraArte.eliminarObraArte(pinturaActual.getIdObra());
 
             txtEstado.setText("Inactivo");

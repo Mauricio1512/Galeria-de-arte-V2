@@ -392,6 +392,9 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
         );
 
         if (opt == JOptionPane.YES_OPTION) {
+
+            // 👇 Llamamos al servicio, que ahora marca "Inactivo" y notifica a los observers
+
             servicioObraArte.eliminarObraArte(esculturaActual.getIdObra());
 
             JOptionPane.showMessageDialog(this, "Escultura marcada como INACTIVA.");
