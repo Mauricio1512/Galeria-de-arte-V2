@@ -30,6 +30,7 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
     }
 
     private void limpiarFormularioEscultura() {
+        txtId.setText("");
         txtTitulo.setText("");
         txtAutor.setText("");
         txtAnioCreacion.setText("");
@@ -77,6 +78,7 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
         jbtnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Eliminar Escultura");
 
         btnBuscarEscultura.setText("Buscar Escultura");
         btnBuscarEscultura.addActionListener(new java.awt.event.ActionListener() {
@@ -282,16 +284,15 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuscarEscultura)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar)
                         .addGap(152, 152, 152)
                         .addComponent(jbtnSalir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -391,10 +392,13 @@ public class GUIEliminarEscultura extends javax.swing.JFrame {
         );
 
         if (opt == JOptionPane.YES_OPTION) {
+
             // 👇 Llamamos al servicio, que ahora marca "Inactivo" y notifica a los observers
+
             servicioObraArte.eliminarObraArte(esculturaActual.getIdObra());
 
             JOptionPane.showMessageDialog(this, "Escultura marcada como INACTIVA.");
+            limpiarFormularioEscultura();
         }
 
     }//GEN-LAST:event_btnEliminarActionPerformed

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class GUIPrincipal extends javax.swing.JFrame {
 
-    private final IServicioObraArte servicioObraArte = new ServicioObraArte();
+    IServicioObraArte servicioObraArte = ServicioObraArte.getInstance();
 
     /**
      * Creates new form GUIPrincipal
@@ -43,17 +43,21 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuItemListarPintura = new javax.swing.JMenuItem();
         jMenuItemBuscarPintura = new javax.swing.JMenuItem();
         jMenuItemEliminarPintura = new javax.swing.JMenuItem();
+        jMenuItemActualizarPintura = new javax.swing.JMenuItem();
         jMenuEscultura = new javax.swing.JMenu();
         jMenuItemAgregarEscultura = new javax.swing.JMenuItem();
         jMenuItemListarEscultura = new javax.swing.JMenuItem();
         jMenuItemBuscarEscultura = new javax.swing.JMenuItem();
         jMenuItemEliminarEscultura = new javax.swing.JMenuItem();
+        jMenuItemActualizarEscultura = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
         jMenuItemAcercade = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ventana Principal");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Galeria_Arte.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,6 +109,14 @@ public class GUIPrincipal extends javax.swing.JFrame {
         });
         jMenuPintura.add(jMenuItemEliminarPintura);
 
+        jMenuItemActualizarPintura.setText("Actualizar Pintura");
+        jMenuItemActualizarPintura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActualizarPinturaActionPerformed(evt);
+            }
+        });
+        jMenuPintura.add(jMenuItemActualizarPintura);
+
         jMenuBar1.add(jMenuPintura);
 
         jMenuEscultura.setText("Escultura");
@@ -140,6 +152,14 @@ public class GUIPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuEscultura.add(jMenuItemEliminarEscultura);
+
+        jMenuItemActualizarEscultura.setText("Actualizar Escultura");
+        jMenuItemActualizarEscultura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActualizarEsculturaActionPerformed(evt);
+            }
+        });
+        jMenuEscultura.add(jMenuItemActualizarEscultura);
 
         jMenuBar1.add(jMenuEscultura);
 
@@ -180,6 +200,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
+        jLabel2.getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -194,7 +216,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemAcercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercadeActionPerformed
-        JOptionPane.showMessageDialog(this, "Desarrollado por Santiago Arciniegas - 2220221016\n" + "Daniel Mauricio Álvarez Morales - 2420211008\n" + "Brayan Santiago Cartagena Díaz - 2220221056\n" + "Julián Camilo Aranguren Herrán - 2220231103");
+        JOptionPane.showMessageDialog(this, "Desarrollado por\n" + "Santiago Arciniegas Jiménez - 2220221016\n" + "Daniel Mauricio Álvarez Morales - 2420211008\n" + "Brayan Santiago Cartagena Díaz - 2220221056\n" + "Julián Camilo Aranguren Herrán - 2220231103");
     }//GEN-LAST:event_jMenuItemAcercadeActionPerformed
 
     private void jMenuItemAgregarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarPinturaActionPerformed
@@ -237,6 +259,16 @@ public class GUIPrincipal extends javax.swing.JFrame {
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarEsculturaActionPerformed
 
+    private void jMenuItemActualizarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarPinturaActionPerformed
+        GUIActualizarPintura gui = new GUIActualizarPintura(servicioObraArte);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemActualizarPinturaActionPerformed
+
+    private void jMenuItemActualizarEsculturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarEsculturaActionPerformed
+        GUIActualizarEscultura gui = new GUIActualizarEscultura(servicioObraArte);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemActualizarEsculturaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,6 +280,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEscultura;
     private javax.swing.JMenuItem jMenuItemAcercade;
+    private javax.swing.JMenuItem jMenuItemActualizarEscultura;
+    private javax.swing.JMenuItem jMenuItemActualizarPintura;
     private javax.swing.JMenuItem jMenuItemAgregarEscultura;
     private javax.swing.JMenuItem jMenuItemAgregarPintura;
     private javax.swing.JMenuItem jMenuItemBuscarEscultura;

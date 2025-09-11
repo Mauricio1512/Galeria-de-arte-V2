@@ -4,41 +4,43 @@
  */
 package com.mycompany.galeriaarte.view;
 
+import com.mycompany.galeriaarte.model.CertificadoAutenticidad;
 import com.mycompany.galeriaarte.model.ObraArte;
 import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.service.ServicioObraArte;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author SANTIAGO
  */
-public class GUIEliminarPintura extends javax.swing.JFrame {
+public class GUIActualizarPintura extends javax.swing.JFrame {
 
     private IServicioObraArte servicioObraArte;
     private Pintura pinturaActual;
 
     /**
      * Creates new form GUIAgregarObraArte
-     *
-     * @param ServicioObraArte
      */
-    public GUIEliminarPintura(IServicioObraArte ServicioObraArte) {
+    public GUIActualizarPintura(IServicioObraArte ServicioObraArte) {
         this.servicioObraArte = ServicioObraArte;
         initComponents();
         setLocationRelativeTo(null);
     }
 
-    private void limpiarFormularioEscultura() {
+    private void limpiarFormularioPintura() {
         txtId.setText("");
         txtTitulo.setText("");
         txtAutor.setText("");
         txtAnioCreacion.setText("");
         txtPrecio.setText("");
-        txtEstado.setText("");
         txtTecnica.setText("");
         txtDimensiones.setText("");
+        txtCertificado.setText("");
+        txtEntidad.setText("");
+        txtFEmision.setText("");
     }
 
     /**
@@ -50,9 +52,7 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbtnSalir = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnBuscarPintura = new javax.swing.JButton();
+        btnBuscaPintura = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -65,34 +65,28 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         txtAutor = new javax.swing.JTextField();
         txtAnioCreacion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
-        txtEstado = new javax.swing.JTextField();
         txtTecnica = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtDimensiones = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtCertificado = new javax.swing.JTextField();
+        txtEntidad = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtFEmision = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JComboBox<>();
+        jbtnSalir = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Eliminar Pintura");
+        setTitle("Actualizar Pintura");
 
-        jbtnSalir.setText("Salir");
-        jbtnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscaPintura.setText("Buscar Pintura");
+        btnBuscaPintura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnSalirActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        btnBuscarPintura.setText("Buscar Pintura");
-        btnBuscarPintura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarPinturaActionPerformed(evt);
+                btnBuscaPinturaActionPerformed(evt);
             }
         });
 
@@ -110,42 +104,30 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
 
         jLabel8.setText("Estado:");
 
-        txtTitulo.setEnabled(false);
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
             }
         });
 
-        txtAutor.setEnabled(false);
         txtAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAutorActionPerformed(evt);
             }
         });
 
-        txtAnioCreacion.setEnabled(false);
         txtAnioCreacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAnioCreacionActionPerformed(evt);
             }
         });
 
-        txtPrecio.setEnabled(false);
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
             }
         });
 
-        txtEstado.setEnabled(false);
-        txtEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstadoActionPerformed(evt);
-            }
-        });
-
-        txtTecnica.setEnabled(false);
         txtTecnica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTecnicaActionPerformed(evt);
@@ -154,7 +136,6 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
 
         jLabel9.setText("Técnica:");
 
-        txtDimensiones.setEnabled(false);
         txtDimensiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDimensionesActionPerformed(evt);
@@ -165,39 +146,89 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Eliminar Pintura");
+        jLabel2.setText("Actualizar Pintura");
+
+        txtCertificado.setEnabled(false);
+        txtCertificado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCertificadoActionPerformed(evt);
+            }
+        });
+
+        txtEntidad.setEnabled(false);
+        txtEntidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEntidadActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Entidad Emisora:");
+
+        txtFEmision.setEnabled(false);
+        txtFEmision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFEmisionActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("N° Certificación:");
+
+        jLabel13.setText("Fecha Emisión:");
+
+        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        txtEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEstadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addGap(8, 8, 8)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTecnica, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel11))
+                                .addGap(14, 14, 14)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtCertificado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEntidad, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDimensiones, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTecnica, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 277, Short.MAX_VALUE)))
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel13))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel12))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel9))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel10)))
+                        .addGap(0, 196, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -237,8 +268,35 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtDimensiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCertificado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtEntidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtFEmision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        jbtnSalir.setText("Salir");
+        jbtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSalirActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setText("Actualizar Pintura");
+        btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,10 +304,10 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBuscarPintura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                .addComponent(btnEliminar)
-                .addGap(152, 152, 152)
+                .addComponent(btnActualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(btnBuscaPintura)
+                .addGap(111, 111, 111)
                 .addComponent(jbtnSalir)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,17 +319,17 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(359, Short.MAX_VALUE)
+                .addContainerGap(406, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminar)
+                    .addComponent(btnBuscaPintura)
                     .addComponent(jbtnSalir)
-                    .addComponent(btnBuscarPintura))
-                .addGap(23, 23, 23))
+                    .addComponent(btnActualizar))
+                .addGap(19, 19, 19))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(69, Short.MAX_VALUE)))
+                    .addContainerGap(71, Short.MAX_VALUE)))
         );
 
         pack();
@@ -297,10 +355,6 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
 
-    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoActionPerformed
-
     private void txtTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTecnicaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTecnicaActionPerformed
@@ -309,14 +363,14 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDimensionesActionPerformed
 
-    private void btnBuscarPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPinturaActionPerformed
+    private void btnBuscaPinturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaPinturaActionPerformed
         try {
             int idBuscado = Integer.parseInt(txtId.getText().trim());
             ObraArte obra = servicioObraArte.buscarObraArte(idBuscado);
 
             if (obra == null) {
                 JOptionPane.showMessageDialog(this, "No se encontró una obra con ese ID.");
-                limpiarFormularioEscultura();
+                limpiarFormularioPintura();
                 return;
             }
 
@@ -324,52 +378,118 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
             txtAutor.setText(obra.getAutor());
             txtAnioCreacion.setText(String.valueOf(obra.getAnioCreacion()));
             txtPrecio.setText(String.valueOf(obra.getPrecio()));
-            txtEstado.setText(obra.getEstado());
+            txtEstado.setSelectedItem(obra.getEstado());
 
             if (obra instanceof Pintura e) {
                 pinturaActual = e;
                 txtTecnica.setText(e.getTecnica());
                 txtDimensiones.setText(e.getDimensiones());
 
+                CertificadoAutenticidad cert = e.getCertificado();
+                if (cert != null) {
+                    txtCertificado.setEnabled(true);
+                    txtEntidad.setEnabled(true);
+                    txtFEmision.setEnabled(true);
+                    txtCertificado.setText(cert.getNumeroCertificado());
+                    txtEntidad.setText(cert.getEntidadEmisora());
+                    txtFEmision.setText(String.valueOf(cert.getFechaEmision()));
+                } else {
+                    txtCertificado.setText("N/A");
+                    txtEntidad.setText("N/A");
+                    txtFEmision.setText("N/A");
+                }
+
+                btnActualizar.setEnabled(true);
+
             } else {
                 pinturaActual = null;
                 JOptionPane.showMessageDialog(this, "El ID corresponde a una obra que no es Pintura.");
-                limpiarFormularioEscultura();
+                limpiarFormularioPintura();
+                btnActualizar.setEnabled(false);
             }
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Ingrese un número válido en el campo de ID.");
         }
-    }//GEN-LAST:event_btnBuscarPinturaActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnBuscaPinturaActionPerformed
+
+    private void txtCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCertificadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCertificadoActionPerformed
+
+    private void txtEntidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEntidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEntidadActionPerformed
+
+    private void txtFEmisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFEmisionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFEmisionActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         if (pinturaActual == null) {
-            JOptionPane.showMessageDialog(this, "Primero busque una pintura.");
+            JOptionPane.showMessageDialog(this, "Primero busque una pintura por ID.");
             return;
         }
 
-        int opt = JOptionPane.showConfirmDialog(
-                this,
-                "¿Marcar como INACTIVA la pintura ID " + pinturaActual.getIdObra() + "?",
-                "Confirmar",
-                JOptionPane.YES_NO_OPTION
-        );
+        try {
+            // Validaciones básicas
+            if (txtTitulo.getText().trim().isEmpty()
+                    || txtAutor.getText().trim().isEmpty()
+                    || txtAnioCreacion.getText().trim().isEmpty()
+                    || txtPrecio.getText().trim().isEmpty()
+                    || txtTecnica.getText().trim().isEmpty()
+                    || txtDimensiones.getText().trim().isEmpty()) {
 
-        if (opt == JOptionPane.YES_OPTION) {
-            // 👇 Usamos el servicio para que notifique a los observadores
+                JOptionPane.showMessageDialog(this, "Complete todos los campos obligatorios.");
+                return;
+            }
 
-            servicioObraArte.eliminarObraArte(pinturaActual.getIdObra());
+            String titulo = txtTitulo.getText().trim();
+            String autor = txtAutor.getText().trim();
+            LocalDate anio = LocalDate.parse(txtAnioCreacion.getText().trim());
+            double precio = Double.parseDouble(txtPrecio.getText().trim());
+            String estado = txtEstado.getSelectedItem().toString().trim();
+            String tecnica = txtTecnica.getText().trim();
+            String dim = txtDimensiones.getText().trim();
 
-            txtEstado.setText("Inactivo");
-            JOptionPane.showMessageDialog(this, "Pintura marcada como INACTIVA.");
-            limpiarFormularioEscultura();
+            // Certificado opcional: si los 3 campos están “rellenos” (y no N/A), lo creamos; si no, queda null
+            CertificadoAutenticidad cert = null;
+            String n = txtCertificado.getText().trim();
+            String ent = txtEntidad.getText().trim();
+            String f = txtFEmision.getText().trim();
+            if (!n.isEmpty() && !ent.isEmpty() && !f.isEmpty()
+                    && !"N/A".equalsIgnoreCase(n) && !"N/A".equalsIgnoreCase(ent) && !"N/A".equalsIgnoreCase(f)) {
+                LocalDate fecha = LocalDate.parse(f); // yyyy-MM-dd
+                cert = new CertificadoAutenticidad(n, fecha, ent);
+            }
+
+            servicioObraArte.actualizarPintura(
+                    pinturaActual.getIdObra(), titulo, autor, anio, precio, estado, tecnica, dim, cert
+            );
+
+            JOptionPane.showMessageDialog(this, "Pintura actualizada correctamente.");
+            limpiarFormularioPintura();
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Precio debe ser numérico.");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarPintura;
-    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBuscaPintura;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -382,8 +502,11 @@ public class GUIEliminarPintura extends javax.swing.JFrame {
     private javax.swing.JButton jbtnSalir;
     private javax.swing.JTextField txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
+    private javax.swing.JTextField txtCertificado;
     private javax.swing.JTextField txtDimensiones;
-    private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtEntidad;
+    private javax.swing.JComboBox<String> txtEstado;
+    private javax.swing.JTextField txtFEmision;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtTecnica;
