@@ -11,6 +11,10 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import com.mycompany.galeriaarte.validator.ValidarFormulario;
 import com.mycompany.galeriaarte.validator.ConversorFormulario;
+import com.toedter.calendar.JDateChooser;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  *
@@ -46,7 +50,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         txtTitulo = new javax.swing.JTextField();
         txtAutor = new javax.swing.JTextField();
-        txtAnioCreacion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtAltura = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -58,6 +61,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         txtTipoEscultura = new javax.swing.JComboBox<>();
         txtMaterial = new javax.swing.JComboBox<>();
         txtEstado = new javax.swing.JComboBox<>();
+        txtAnioCreacion = new com.toedter.calendar.JDateChooser();
         jbtnSalir = new javax.swing.JButton();
         btnAgregarObra = new javax.swing.JButton();
 
@@ -104,12 +108,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
         txtAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAutorActionPerformed(evt);
-            }
-        });
-
-        txtAnioCreacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnioCreacionActionPerformed(evt);
             }
         });
 
@@ -189,7 +187,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                                         .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                                         .addComponent(txtTipoEscultura, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(JPanelLayout.createSequentialGroup()
@@ -201,19 +199,19 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                                                 .addComponent(jLabel6)
                                                 .addComponent(jLabel7))
                                             .addGap(8, 8, 8)
-                                            .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                                .addComponent(txtVolumen, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                                .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                                .addComponent(txtAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                                .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                                .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                                .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtAnioCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addComponent(jLabel10)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 102, Short.MAX_VALUE)))
+                        .addGap(0, 197, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         JPanelLayout.setVerticalGroup(
@@ -234,10 +232,11 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel8))
+                    .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -264,6 +263,9 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
                     .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        txtAnioCreacion.getAccessibleContext().setAccessibleName("txtAnioCreacion");
+        txtAnioCreacion.getAccessibleContext().setAccessibleDescription("");
 
         jbtnSalir.setText("Salir");
         jbtnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -314,15 +316,20 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
 
     private void btnAgregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarObraActionPerformed
         try {
+            Date fecha = txtAnioCreacion.getDate();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+            String anioCreacionTxt = formato.format(fecha);
+            
             String idTxt = txtId.getText().trim();
             String tituloTxt = txtTitulo.getText().trim();
             String autorTxt = txtAutor.getText().trim();
-            String anioCreacionTxt = txtAnioCreacion.getText().trim();
+            //JDateChooser anioCreacionTxt = new com.toedter.calendar.JDateChooser();
+            //anioCreacionTxt.setDateFormatString("yyyy-MM-dd");
             String precioTxt = txtPrecio.getText().trim();
             String alturaTxt = txtAltura.getText().trim();
             String volumenTxt = txtVolumen.getText().trim();
 
-            if (ValidarFormulario.camposObligatoriosVacios(idTxt, tituloTxt, autorTxt, anioCreacionTxt, precioTxt, alturaTxt, volumenTxt)) {
+            if (ValidarFormulario.camposObligatoriosVacios(idTxt, tituloTxt, autorTxt,anioCreacionTxt, precioTxt, alturaTxt, volumenTxt)) {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
                 return;
             }
@@ -379,7 +386,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
             txtId.setText("");
             txtTitulo.setText("");
             txtAutor.setText("");
-            txtAnioCreacion.setText("");
             txtPrecio.setText("");
             txtAltura.setText("");
             txtVolumen.setText("");
@@ -401,10 +407,6 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
-
-    private void txtAnioCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioCreacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnioCreacionActionPerformed
 
     private void txtAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorActionPerformed
         // TODO add your handling code here:
@@ -448,7 +450,7 @@ public class GUIAgregarEscultura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jbtnSalir;
     private javax.swing.JTextField txtAltura;
-    private javax.swing.JTextField txtAnioCreacion;
+    private com.toedter.calendar.JDateChooser txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JComboBox<String> txtEstado;
     private javax.swing.JTextField txtId;

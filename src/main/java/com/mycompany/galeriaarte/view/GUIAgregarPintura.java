@@ -6,8 +6,10 @@ import com.mycompany.galeriaarte.model.Pintura;
 import com.mycompany.galeriaarte.service.IServicioObraArte;
 import com.mycompany.galeriaarte.validator.ValidarFormulario;
 import com.mycompany.galeriaarte.validator.ConversorFormulario;
+import java.text.SimpleDateFormat;
 
 import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,7 +47,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         txtTitulo = new javax.swing.JTextField();
         txtAutor = new javax.swing.JTextField();
-        txtAnioCreacion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtTecnica = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -55,6 +56,7 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         btnCertificado = new javax.swing.JButton();
         txtEstado = new javax.swing.JComboBox<>();
+        txtAnioCreacion = new com.toedter.calendar.JDateChooser();
         jbtnSalir = new javax.swing.JButton();
         btnAgregarObra = new javax.swing.JButton();
 
@@ -92,12 +94,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         txtAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAutorActionPerformed(evt);
-            }
-        });
-
-        txtAnioCreacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnioCreacionActionPerformed(evt);
             }
         });
 
@@ -162,14 +158,14 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
                                             .addComponent(jLabel5)
                                             .addComponent(jLabel6))
                                         .addGap(8, 8, 8)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTecnica, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDimensiones, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtTecnica, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                            .addComponent(txtDimensiones, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                            .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                            .addComponent(txtAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                            .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                            .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                            .addComponent(txtAnioCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addComponent(jLabel10)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel7)
@@ -201,10 +197,11 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel8))
+                    .addComponent(txtAnioCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -282,10 +279,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAutorActionPerformed
 
-    private void txtAnioCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioCreacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnioCreacionActionPerformed
-
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
@@ -300,10 +293,13 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
 
     private void btnAgregarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarObraActionPerformed
         try {
+            Date fecha = txtAnioCreacion.getDate();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+            String anioCreacionTxt = formato.format(fecha);
+            
             String idTxt = txtId.getText().trim();
             String tituloTxt = txtTitulo.getText().trim();
             String autorTxt = txtAutor.getText().trim();
-            String anioCreacionTxt = txtAnioCreacion.getText().trim();
             String precioTxt = txtPrecio.getText().trim();
             String tecnicaTxt = txtTecnica.getText().trim();
             String dimensionesTxt = txtDimensiones.getText().trim();
@@ -362,7 +358,6 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
             txtId.setText("");
             txtTitulo.setText("");
             txtAutor.setText("");
-            txtAnioCreacion.setText("");
             txtPrecio.setText("");
             txtTecnica.setText("");
             txtDimensiones.setText("");
@@ -402,7 +397,7 @@ public class GUIAgregarPintura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbtnSalir;
-    private javax.swing.JTextField txtAnioCreacion;
+    private com.toedter.calendar.JDateChooser txtAnioCreacion;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtDimensiones;
     private javax.swing.JComboBox<String> txtEstado;

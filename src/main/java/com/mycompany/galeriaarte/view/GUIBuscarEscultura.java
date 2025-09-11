@@ -351,9 +351,8 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btncalFragilidad)))
+                    .addComponent(btncalFragilidad)
+                    .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -409,10 +408,6 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
     private void txtAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAutorActionPerformed
-
-    private void txtAnioCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioCreacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnioCreacionActionPerformed
 
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
@@ -521,6 +516,10 @@ public class GUIBuscarEscultura extends javax.swing.JFrame {
                 "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCalcValorActionPerformed
+
+    private void txtAnioCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioCreacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnioCreacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscaEscultura;
