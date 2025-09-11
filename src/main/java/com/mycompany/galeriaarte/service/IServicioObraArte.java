@@ -26,6 +26,8 @@ public interface IServicioObraArte {
                              String tipoEscultura, String material);
 
     void eliminarObraArte(int id);
+    
+    public double calcularValor(ObraArte o, int dueñosAnteriores);
 
     ObraArte buscarObraArte(int id);
 

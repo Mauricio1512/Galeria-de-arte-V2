@@ -168,4 +168,9 @@ public class ServicioObraArte implements IServicioObraArte {
                 .findFirst();
         return resultado.orElse(null);
     }
+    
+    @Override
+    public double calcularValor(ObraArte o, int dueñosAnteriores) {
+        return o.calcularValor(dueñosAnteriores);
+    }
 }

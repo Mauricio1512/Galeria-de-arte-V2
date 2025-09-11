@@ -74,4 +74,14 @@ public class Escultura extends ObraArte implements IFragilidad {
                 + ", Altura: " + altura
                 + ", Fragilidad: " + calcularFragilidad();
     }
+
+    @Override
+    public double calcularValor(int dueñosAnteriores) {
+        if (dueñosAnteriores <= 2) {
+            return getPrecio();         
+        } else {
+            return getPrecio() * (1 + 0.05 * (dueñosAnteriores - 2));
+            
+        }
+    }
 }
