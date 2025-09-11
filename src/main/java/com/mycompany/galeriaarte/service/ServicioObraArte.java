@@ -57,7 +57,7 @@ public class ServicioObraArte implements IServicioObraArte {
         }
 
         listaObras.add(obra);
-        notificarObservadores(); // 🚨 avisamos a las ventanas
+        notificarObservadores(); 
     }
 
     @Override
@@ -114,7 +114,7 @@ public class ServicioObraArte implements IServicioObraArte {
         p.setTecnica(tecnica);
         p.setDimensiones(dimensiones);
 
-        // ---- Certificado (política: si viene null, se quita; si viene no-null, se asigna)
+        
         p.setCertificado(cert);
         
         notificarObservadores();
@@ -154,7 +154,7 @@ public class ServicioObraArte implements IServicioObraArte {
         for (ObraArte obra : listaObras) {
             if (obra.getIdObra() == id) {
                 obra.setEstado("Inactivo");
-                notificarObservadores(); // 👈 Avisamos a todos los observadores
+                notificarObservadores(); 
                 return;
             }
         }
