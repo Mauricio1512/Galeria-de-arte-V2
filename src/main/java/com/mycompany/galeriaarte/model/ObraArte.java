@@ -90,5 +90,9 @@ public abstract class ObraArte {
             throw new IllegalArgumentException("Estado inválido. Solo se permite 'Activo' o 'Inactivo'.");
         }
     }
+    
+    public double calcularValor(int dueñosAnteriores) {
+        return this.precio * 1 * dueñosAnteriores; 
+    }
 
 }

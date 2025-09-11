@@ -48,4 +48,15 @@ public class Pintura extends ObraArte {
         this.dimensiones = dimensiones;
     }
 
+    @Override
+    public double calcularValor(int dueñosAnteriores) {
+        if (dueñosAnteriores == 1) {
+            return getPrecio() * 1.3;   
+        } else if (dueñosAnteriores == 2) {
+            return getPrecio() * 1.1;   
+        } else {
+            return getPrecio() * 0.9;  
+        }
+    }
+
 }
